@@ -11,6 +11,7 @@ import {
 const OrganismContact = () => {
   return (
     <Flex
+      id="contact"
       flexDirection={["column", "column", "row"]}
       justifyContent="space-evenly"
       alignItems="center"

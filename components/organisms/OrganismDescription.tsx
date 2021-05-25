@@ -11,12 +11,11 @@ SwiperCore.use([Autoplay, Navigation, EffectCoverflow]);
 
 const OrganismDescription = () => {
   return (
-    <Grid
-      gridAutoRows="auto"
-      rowGap="6"
-      marginTop="4"
+    <Box
       as="section"
       gridColumn="center-start / center-end"
+      overflow="hidden"
+      padding="3"
     >
       <Box position="relative" overflow="hidden">
         <Swiper
@@ -171,7 +170,13 @@ const OrganismDescription = () => {
       </Box>
 
       <Box textAlign="center">
-        <Text as="h3" fontSize="md" fontWeight="bold">
+        <Text
+          marginTop="2"
+          marginBottom="2"
+          as="h3"
+          fontSize="md"
+          fontWeight="bold"
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
           consequatur sapiente dolore, qui maiores saepe?
         </Text>
@@ -180,7 +185,7 @@ const OrganismDescription = () => {
           <Button margin="3">kontakt</Button>
         </Box>
       </Box>
-    </Grid>
+    </Box>
   );
 };
 

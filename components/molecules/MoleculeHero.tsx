@@ -41,10 +41,11 @@ const Hero = () => {
               dowiedz się wiecej
             </Button>
           </NextLink>
-
-          <Button fontSize="inherit" colorScheme="yellow">
-            kontakt
-          </Button>
+          <NextLink href="/#contact">
+            <Button fontSize="inherit" colorScheme="yellow">
+              kontakt
+            </Button>
+          </NextLink>
         </Box>
       </Flex>
     </Box>

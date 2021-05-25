@@ -12,7 +12,25 @@ const OrganismPricing = () => {
       padding="2rem"
     >
       <Box>
-        <Text as="h1" fontWeight="bold">
+        <Text
+          _after={{
+            content: '""',
+            position: "absolute",
+            width: "80%",
+            height: "3px",
+            backgroundColor: "red.500",
+            bottom: "-3px",
+            left: "0",
+            borderRadius: "3px",
+          }}
+          position="relative"
+          width="100%"
+          padding="2"
+          margin="4"
+          fontSize="lg"
+          fontWeight="bold"
+          as="h1"
+        >
           Jak dobieramy ceny
         </Text>
       </Box>
@@ -39,7 +57,7 @@ const OrganismPricing = () => {
         >
           <Stack>
             <Text as="h2" fontSize="md" fontWeight="bold">
-              tak o
+              wariant 
             </Text>
             <Text as="p">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
@@ -74,7 +92,7 @@ const OrganismPricing = () => {
         >
           <Stack>
             <Text as="h2" fontSize="md" fontWeight="bold">
-              tak o
+              wariant 
             </Text>
             <Text as="p">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
@@ -109,7 +127,7 @@ const OrganismPricing = () => {
         >
           <Stack>
             <Text as="h2" fontSize="md" fontWeight="bold">
-              tak o
+              wariant 
             </Text>
             <Text as="p">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia

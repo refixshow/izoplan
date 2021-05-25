@@ -1,4 +1,5 @@
 import { Box, Flex, Stack, Text, Button, theme } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const Hero = () => {
   return (
@@ -24,20 +25,23 @@ const Hero = () => {
           </Text>
         </Stack>
         <Box>
-          <Button
-            color={theme.colors.gray[100]}
-            _active={{
-              color: theme.colors.gray[800],
-            }}
-            _hover={{
-              backgroundColor: theme.colors.gray[100],
-              color: theme.colors.gray[800],
-            }}
-            fontSize="inherit"
-            variant="outline"
-          >
-            dowiedz się wiecej
-          </Button>
+          <NextLink href="/#offer">
+            <Button
+              color={theme.colors.gray[100]}
+              _active={{
+                color: theme.colors.gray[800],
+              }}
+              _hover={{
+                backgroundColor: theme.colors.gray[100],
+                color: theme.colors.gray[800],
+              }}
+              fontSize="inherit"
+              variant="outline"
+            >
+              dowiedz się wiecej
+            </Button>
+          </NextLink>
+
           <Button fontSize="inherit" colorScheme="yellow">
             kontakt
           </Button>

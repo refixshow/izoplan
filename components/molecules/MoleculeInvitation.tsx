@@ -1,18 +1,23 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-const MoleculeInvitation = () => {
+interface IProps {
+  text: string;
+  yellow?: boolean;
+}
+
+const MoleculeInvitation = ({ text, yellow }: IProps) => {
   return (
     <Flex
       as="header"
       textAlign="center"
       justifyContent="center"
       alignItems="center"
-      backgroundColor="yellow.500"
+      backgroundColor={yellow ? "yellow.500" : "none"}
       gridColumn="full-start / full-end"
       padding="10"
     >
       <Text as="h2" fontSize="md" fontWeight="bold">
-        bezplatny pomiar i wycena
+        {text}
       </Text>
     </Flex>
   );

@@ -1,10 +1,22 @@
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Stack,
+  Text,
+  useColorModeValue,
+  theme,
+} from "@chakra-ui/react";
 
 const OrganismCons = () => {
+  const grayColor = useColorModeValue(
+    theme.colors.gray[300],
+    theme.colors.gray[800]
+  );
+
   return (
     <Box
       padding="3rem"
-      backgroundColor="gray.300"
+      backgroundColor={grayColor}
       gridColumn="full-start / full-end"
     >
       <Flex

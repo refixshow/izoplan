@@ -170,38 +170,14 @@ const OrganismDescription = () => {
         </Swiper>
       </Box>
 
-      {/* <Flex
-        direction="column"
-        padding="4"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box position="relative" width="150px" height="150px">
-          <NextImage src="/assets/icon-1.svg" alt="abc" layout="fill" />
-        </Box>
-        <Stack>
-          <Text as="h2" fontWeight="bold">
-            Lorem ipsum dolor sit amet.
-          </Text>
-          <Text as="p">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia
-            magnam, soluta dolore vel iure cum et quibusdam molestias est
-            maiores ex repellat, doloribus omnis placeat?
-          </Text>
-        </Stack>
-      </Flex> */}
-
       <Box textAlign="center">
         <Text as="h3" fontSize="md" fontWeight="bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-          consequatur sapiente dolore, qui maiores saepe? korzysci: obniżenie
-          kosztów ogrzewania, izolacja akustyczna, 100% szczelności (brak
-          mostków), odpornośc na pleśnie i grzyby, nieznienne właściwości,
-          szybka i skuteczna metoda
+          consequatur sapiente dolore, qui maiores saepe?
         </Text>
         <Box>
-          <Button>cennik</Button>
-          <Button>kontakt</Button>
+          <Button margin="3">cennik</Button>
+          <Button margin="3">kontakt</Button>
         </Box>
       </Box>
     </Grid>

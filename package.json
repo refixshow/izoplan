@@ -1,0 +1,29 @@
+{
+  "name": "izoplan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.6.2",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "contentful": "^8.3.5",
+    "framer-motion": "^4.1.17",
+    "next": "10.2.2",
+    "next-images": "^1.7.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-intersection-observer": "^8.32.0",
+    "swiper": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.3.1",
+    "@types/react": "^17.0.6",
+    "typescript": "^4.2.4"
+  }
+}

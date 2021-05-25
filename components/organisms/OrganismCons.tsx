@@ -20,6 +20,7 @@ const OrganismCons = () => {
       gridColumn="full-start / full-end"
     >
       <Flex
+        padding="2"
         _even={{
           flexDirection: ["row", "row", "column-reverse"],
           textAlign: ["left", "left", "right"],
@@ -43,6 +44,7 @@ const OrganismCons = () => {
         </Stack>
       </Flex>
       <Flex
+        padding="2"
         _even={{
           flexDirection: ["row", "row", "column-reverse"],
           textAlign: ["left", "left", "right"],
@@ -66,6 +68,7 @@ const OrganismCons = () => {
         </Stack>
       </Flex>
       <Flex
+        padding="2"
         _even={{
           flexDirection: ["row", "row", "column-reverse"],
           textAlign: ["left", "left", "right"],
@@ -89,6 +92,7 @@ const OrganismCons = () => {
         </Stack>
       </Flex>
       <Flex
+        padding="2"
         _even={{
           flexDirection: ["row", "row", "column-reverse"],
           textAlign: ["left", "left", "right"],
@@ -112,6 +116,7 @@ const OrganismCons = () => {
         </Stack>
       </Flex>
       <Flex
+        padding="2"
         _even={{
           flexDirection: ["row", "row", "column-reverse"],
           textAlign: ["left", "left", "right"],

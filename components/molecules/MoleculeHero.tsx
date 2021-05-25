@@ -27,6 +27,7 @@ const Hero = () => {
         <Box>
           <NextLink href="/#offer">
             <Button
+              margin="2"
               color={theme.colors.gray[100]}
               _active={{
                 color: theme.colors.gray[800],
@@ -38,11 +39,11 @@ const Hero = () => {
               fontSize="inherit"
               variant="outline"
             >
-              dowiedz się wiecej
+              Zobacz ofertę
             </Button>
           </NextLink>
           <NextLink href="/#contact">
-            <Button fontSize="inherit" colorScheme="yellow">
+            <Button margin="2" fontSize="inherit" colorScheme="yellow">
               kontakt
             </Button>
           </NextLink>

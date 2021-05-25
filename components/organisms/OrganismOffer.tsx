@@ -1,10 +1,24 @@
 import NextLink from "next/link";
-import { Box, Flex, Text, Stack, Button, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Stack,
+  Button,
+  useColorMode,
+  useColorModeValue,
+  theme,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 import { TriangleDownIcon } from "@chakra-ui/icons";
 
 const OrganismOffer = () => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
+  const YellowColor = useColorModeValue(
+    theme.colors.red[400],
+    theme.colors.yellow[400]
+  );
 
   return (
     <Box
@@ -77,8 +91,10 @@ const OrganismOffer = () => {
               </Text>
             </Stack>
           </Box>
-          <Box>
-            <NextLink href="/offer/#">dowiedz się więcej</NextLink>
+          <Box marginTop="3">
+            <NextLink href="/offer/#">
+              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
+            </NextLink>
           </Box>
         </Box>
         <Box
@@ -123,8 +139,10 @@ const OrganismOffer = () => {
               </Text>
             </Stack>
           </Box>
-          <Box>
-            <NextLink href="/offer/#">dowiedz się więcej</NextLink>
+          <Box marginTop="3">
+            <NextLink href="/offer/#">
+              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
+            </NextLink>
           </Box>
         </Box>
         <Box
@@ -169,8 +187,10 @@ const OrganismOffer = () => {
               </Text>
             </Stack>
           </Box>
-          <Box>
-            <NextLink href="/offer/#">dowiedz się więcej</NextLink>
+          <Box marginTop="3">
+            <NextLink href="/offer/#">
+              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
+            </NextLink>
           </Box>
         </Box>
         <Box
@@ -215,8 +235,10 @@ const OrganismOffer = () => {
               </Text>
             </Stack>
           </Box>
-          <Box>
-            <NextLink href="/offer/#">dowiedz się więcej</NextLink>
+          <Box marginTop="3">
+            <NextLink href="/offer/#">
+              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
+            </NextLink>
           </Box>
         </Box>
       </Flex>

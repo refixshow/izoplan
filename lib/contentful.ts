@@ -2,6 +2,8 @@ import { createClient, EntryCollection } from "contentful";
 
 export type TFetchAllEntries = EntryCollection<unknown>;
 
+export const arr = [];
+
 export const client = createClient({
   space: process.env.CONTENTFULL_SPACE,
   accessToken: process.env.CONTENTFULL_ACCESSTOKEN,

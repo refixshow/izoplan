@@ -1,6 +1,8 @@
 import { fetchAllEntries, TFetchAllEntries } from "../lib";
 import { Grid, Box, useColorModeValue, theme } from "@chakra-ui/react";
 
+import { useEffect } from "react";
+
 import {
   MoleculeMainNavBar,
   MoleculeInvitation,
@@ -18,6 +20,10 @@ interface IProps {
 
 const Home = ({ contentfulItems }: IProps) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
+
+  useEffect(() => {
+    console.log(contentfulItems);
+  }, []);
 
   return (
     <Box
@@ -67,18 +73,18 @@ const Home = ({ contentfulItems }: IProps) => {
   );
 };
 
-// export async function getStaticProps() {
-//   // const res = await fetchAllEntries();
+export async function getStaticProps() {
+  const res = await fetchAllEntries();
 
-//   if (res.errors) {
-//     return {
-//       notFound: true,
-//     };
-//   }
+  if (res.errors) {
+    return {
+      notFound: true,
+    };
+  }
 
-//   return {
-//     props: { contentfulItems: res },
-//   };
-// }
+  return {
+    props: { contentfulItems: res },
+  };
+}
 
 export default Home;

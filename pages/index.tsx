@@ -43,8 +43,8 @@ const Home = ({ contentfulItems }: IProps) => {
       >
         <OrganismOffer />
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismDescription />
-        <OrganismCons />
+        <OrganismDescription desc={[1, 2, 3, 4, 5]} />
+        <OrganismCons cons={[1, 2, 3, 4, 5]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
         <OrganismContact />

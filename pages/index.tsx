@@ -1,7 +1,7 @@
 import { entries, fetchAllEntries, TFetchAllEntries } from "../lib";
 import { Grid, Box, useColorModeValue, theme } from "@chakra-ui/react";
 
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 
 import {
   MoleculeMainNavBar,
@@ -14,7 +14,7 @@ import {
   OrganismContact,
 } from "../components";
 
-import { parseContentfulData, fetchSingleEntry } from "../lib";
+import { parseContentfulData } from "../lib";
 
 interface IProps {
   contentfulData: TFetchAllEntries;
@@ -77,16 +77,16 @@ const Home = ({ contentfulData }: IProps) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetchAllEntries();
+  const contentfulEntries = await fetchAllEntries();
 
-  if (res.errors) {
+  if (contentfulEntries.errors) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { contentfulData: res },
+    props: { contentfulData: contentfulEntries },
   };
 }
 

@@ -1,4 +1,5 @@
 import NextImage from "next/image";
+import { useCallback } from "react";
 
 import {
   Flex,
@@ -10,6 +11,25 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 const OrganismContact = () => {
+  const handleSubmit = useCallback(async (event) => {
+    event.preventDefault();
+
+    const res = await fetch("/api/mailer", {
+      body: JSON.stringify({
+        imie: event.target.imie.value,
+        nazwisko: event.target.nazwisko.value,
+        email: event.target.email.value,
+        text: event.target.text.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+    const result = await res.json();
+    console.log(result);
+  }, []);
+
   return (
     <Box gridColumn="center-start / center-end">
       <Text
@@ -44,16 +64,22 @@ const OrganismContact = () => {
           <NextImage src="/assets/ok.jpg" alt="abc" layout="fill" />
         </Box>
         <Box my={8} textAlign="left">
-          <form>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <FormLabel>Imię</FormLabel>
-              <Input type="text" placeholder="Wpisz swoje imię..." required />
+              <Input
+                type="text"
+                name="imie"
+                placeholder="Wpisz swoje imię..."
+                required
+              />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Nazwisko</FormLabel>
               <Input
                 type="text"
+                name="nazwisko"
                 placeholder="Wpisz swoje nazwisko..."
                 required
               />
@@ -62,6 +88,7 @@ const OrganismContact = () => {
               <FormLabel>E-mail</FormLabel>
               <Input
                 type="email"
+                name="email"
                 placeholder="Wpisz swoje nazwisko..."
                 required
               />
@@ -69,6 +96,7 @@ const OrganismContact = () => {
             <FormControl mt={4}>
               <FormLabel>Twoja wiadomość</FormLabel>
               <Textarea
+                name="text"
                 maxLength={800}
                 placeholder="Wpisz swoją wiadomość..."
                 required

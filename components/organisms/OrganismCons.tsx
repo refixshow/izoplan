@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { Grid, Flex, Stack, Text, Box, Button } from "@chakra-ui/react";
+import { Flex, Stack, Text, Box, Button } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
@@ -40,7 +40,7 @@ const OrganismCons = ({ cons }: IProps) => {
         >
           {cons.map((el) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={el.tytul}>
                 <Flex
                   direction="column"
                   padding="4"
@@ -49,139 +49,23 @@ const OrganismCons = ({ cons }: IProps) => {
                 >
                   <Box position="relative" width="150px" height="150px">
                     <NextImage
-                      src="/assets/icon-1.svg"
-                      alt="abc"
+                      src={`http:${el.ikona.fields.file.url}`}
+                      alt={el.ikona.fields.title}
                       layout="fill"
                     />
                   </Box>
                   <Stack>
                     <Text as="h2" fontWeight="bold">
-                      Obniżenie kosztów ogrzewania
+                      {el.tytul}
                     </Text>
-                    <Text as="p">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Officia magnam, soluta dolore vel iure cum et quibusdam
-                      molestias est maiores ex repellat, doloribus omnis
-                      placeat?
-                    </Text>
+                    <Text as="p">{el.opis}</Text>
                   </Stack>
                 </Flex>
               </SwiperSlide>
             );
           })}
-          <SwiperSlide>
-            <Flex
-              direction="column"
-              padding="4"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box position="relative" width="150px" height="150px">
-                <NextImage src="/assets/icon-2.svg" alt="abc" layout="fill" />
-              </Box>
-              <Stack>
-                <Text as="h2" fontWeight="bold">
-                  izolacja akustyczna
-                </Text>
-                <Text as="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia magnam, soluta dolore vel iure cum et quibusdam
-                  molestias est maiores ex repellat, doloribus omnis placeat?
-                </Text>
-              </Stack>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              direction="column"
-              padding="4"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box position="relative" width="150px" height="150px">
-                <NextImage src="/assets/icon-3.svg" alt="abc" layout="fill" />
-              </Box>
-              <Stack>
-                <Text as="h2" fontWeight="bold">
-                  100% szczelności (brak mostków)
-                </Text>
-                <Text as="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia magnam, soluta dolore vel iure cum et quibusdam
-                  molestias est maiores ex repellat, doloribus omnis placeat?
-                </Text>
-              </Stack>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              direction="column"
-              padding="4"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box position="relative" width="150px" height="150px">
-                <NextImage src="/assets/icon-4.svg" alt="abc" layout="fill" />
-              </Box>
-              <Stack>
-                <Text as="h2" fontWeight="bold">
-                  odporność na pleśnie i grzyby
-                </Text>
-                <Text as="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia magnam, soluta dolore vel iure cum et quibusdam
-                  molestias est maiores ex repellat, doloribus omnis placeat?
-                </Text>
-              </Stack>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              direction="column"
-              padding="4"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box position="relative" width="150px" height="150px">
-                <NextImage src="/assets/icon-5.svg" alt="abc" layout="fill" />
-              </Box>
-              <Stack>
-                <Text as="h2" fontWeight="bold">
-                  niezmienne właściwości
-                </Text>
-                <Text as="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia magnam, soluta dolore vel iure cum et quibusdam
-                  molestias est maiores ex repellat, doloribus omnis placeat?
-                </Text>
-              </Stack>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              direction="column"
-              padding="4"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box position="relative" width="150px" height="150px">
-                <NextImage src="/assets/icon-3.svg" alt="abc" layout="fill" />
-              </Box>
-              <Stack>
-                <Text as="h2" fontWeight="bold">
-                  szybka i skuteczna metoda
-                </Text>
-                <Text as="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia magnam, soluta dolore vel iure cum et quibusdam
-                  molestias est maiores ex repellat, doloribus omnis placeat?
-                </Text>
-              </Stack>
-            </Flex>
-          </SwiperSlide>
         </Swiper>
       </Box>
-
       <Box textAlign="center">
         <Text
           marginTop="2"

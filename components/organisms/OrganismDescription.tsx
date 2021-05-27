@@ -26,7 +26,7 @@ const OrganismDescription = ({ desc }: IProps) => {
       {desc.map((el) => {
         return (
           <Flex
-            key={el}
+            key={el.tytul}
             padding="2"
             _even={{
               flexDirection: ["row", "row", "column-reverse"],
@@ -38,16 +38,9 @@ const OrganismDescription = ({ desc }: IProps) => {
             <Box display={["none", "none", "block"]}>img</Box>
             <Stack>
               <Text as="h3" fontWeight="bold">
-                ocieplanie poddaszy
+                {el.tytul}
               </Text>
-              <Text>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Recusandae, necessitatibus? Voluptatem nihil quod dolore quidem!
-              </Text>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deserunt reprehenderit ullam doloremque voluptas a repudiandae.
-              </Text>
+              <Text>{el.opis.content[0].content[0].value}</Text>
             </Stack>
           </Flex>
         );

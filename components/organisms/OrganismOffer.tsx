@@ -11,8 +11,13 @@ import {
   Link as ChakraLink,
 } from "@chakra-ui/react";
 import { TriangleDownIcon } from "@chakra-ui/icons";
+import slugify from "slugify";
 
-const OrganismOffer = () => {
+interface IProps {
+  offer: any[];
+}
+
+const OrganismOffer = ({ offer }: IProps) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const YellowColor = useColorModeValue(
@@ -49,198 +54,56 @@ const OrganismOffer = () => {
         >
           Oferta
         </Text>
-        <Box
-          textAlign="center"
-          width={["100%", "44%", "44%", "22%"]}
-          padding="5"
-          margin="3"
-          boxShadow={
-            isDark
-              ? "0px 0px 10px rgb(0 0 0 / 30%)"
-              : "0px 0px 10px rgb(0 0 0 / 20%)"
-          }
-          transition="box-shadow .3s"
-          _hover={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-          _active={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-        >
-          <Box
-            height="90px"
-            backgroundImage="url('/assets/stropy.png')"
-            backgroundSize="contain"
-            backgroundRepeat="no-repeat"
-            backgroundPosition="center"
-          />
-          <Box marginTop="3">
-            <Stack>
-              <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
-                Stropy
-              </Text>
-              <Text as="p">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                nesciunt? Quasi deleniti fuga asperiores! Voluptates ut error
-                aspernatur? Beatae molestiae harum minima dignissimos, iure
-                quia!
-              </Text>
-            </Stack>
-          </Box>
-          <Box marginTop="3">
-            <NextLink href="/offer/#">
-              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
-            </NextLink>
-          </Box>
-        </Box>
-        <Box
-          textAlign="center"
-          width={["100%", "44%", "44%", "22%"]}
-          padding="5"
-          margin="3"
-          boxShadow={
-            isDark
-              ? "0px 0px 10px rgb(0 0 0 / 30%)"
-              : "0px 0px 10px rgb(0 0 0 / 20%)"
-          }
-          transition="box-shadow .3s"
-          _hover={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-          _active={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-        >
-          <Box
-            height="90px"
-            backgroundImage="url('/assets/dachy.png')"
-            backgroundSize="contain"
-            backgroundRepeat="no-repeat"
-            backgroundPosition="center"
-          />
-          <Box marginTop="3">
-            <Stack>
-              <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
-                Dachy
-              </Text>
-              <Text as="p">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                nesciunt? Quasi deleniti fuga asperiores! Voluptates ut error
-                aspernatur? Beatae molestiae harum minima dignissimos, iure
-                quia!
-              </Text>
-            </Stack>
-          </Box>
-          <Box marginTop="3">
-            <NextLink href="/offer/#">
-              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
-            </NextLink>
-          </Box>
-        </Box>
-        <Box
-          textAlign="center"
-          width={["100%", "44%", "44%", "22%"]}
-          padding="5"
-          margin="3"
-          boxShadow={
-            isDark
-              ? "0px 0px 10px rgb(0 0 0 / 30%)"
-              : "0px 0px 10px rgb(0 0 0 / 20%)"
-          }
-          transition="box-shadow .3s"
-          _hover={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-          _active={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-        >
-          <Box
-            height="90px"
-            backgroundImage="url('/assets/fundamenty.png')"
-            backgroundSize="contain"
-            backgroundRepeat="no-repeat"
-            backgroundPosition="center"
-          />
-          <Box marginTop="3">
-            <Stack>
-              <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
-                Fundamenty
-              </Text>
-              <Text as="p">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                nesciunt? Quasi deleniti fuga asperiores! Voluptates ut error
-                aspernatur? Beatae molestiae harum minima dignissimos, iure
-                quia!
-              </Text>
-            </Stack>
-          </Box>
-          <Box marginTop="3">
-            <NextLink href="/offer/#">
-              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
-            </NextLink>
-          </Box>
-        </Box>
-        <Box
-          textAlign="center"
-          width={["100%", "44%", "44%", "22%"]}
-          padding="5"
-          margin="3"
-          boxShadow={
-            isDark
-              ? "0px 0px 10px rgb(0 0 0 / 30%)"
-              : "0px 0px 10px rgb(0 0 0 / 20%)"
-          }
-          transition="box-shadow .3s"
-          _hover={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-          _active={{
-            boxShadow: isDark
-              ? "0px 0px 10px rgb(0 0 0 / 50%)"
-              : "0px 0px 10px rgb(0 0 0 / 30%)",
-          }}
-        >
-          <Box
-            height="90px"
-            backgroundImage="url('/assets/sciany.png')"
-            backgroundSize="contain"
-            backgroundRepeat="no-repeat"
-            backgroundPosition="center"
-          />
-          <Box marginTop="3">
-            <Stack>
-              <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
-                Ściany
-              </Text>
-              <Text as="p">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                nesciunt? Quasi deleniti fuga asperiores! Voluptates ut error
-                aspernatur? Beatae molestiae harum minima dignissimos, iure
-                quia!
-              </Text>
-            </Stack>
-          </Box>
-          <Box marginTop="3">
-            <NextLink href="/offer/#">
-              <ChakraLink color={YellowColor}>dowiedz się więcej</ChakraLink>
-            </NextLink>
-          </Box>
-        </Box>
+        {offer.map((el) => {
+          return (
+            <Box
+              key={el.tytul}
+              textAlign="center"
+              width={["100%", "44%", "44%", "22%"]}
+              padding="5"
+              margin="3"
+              boxShadow={
+                isDark
+                  ? "0px 0px 10px rgb(0 0 0 / 30%)"
+                  : "0px 0px 10px rgb(0 0 0 / 20%)"
+              }
+              transition="box-shadow .3s"
+              _hover={{
+                boxShadow: isDark
+                  ? "0px 0px 10px rgb(0 0 0 / 50%)"
+                  : "0px 0px 10px rgb(0 0 0 / 30%)",
+              }}
+              _active={{
+                boxShadow: isDark
+                  ? "0px 0px 10px rgb(0 0 0 / 50%)"
+                  : "0px 0px 10px rgb(0 0 0 / 30%)",
+              }}
+            >
+              <Box
+                height="90px"
+                backgroundImage="url('/assets/stropy.png')"
+                backgroundSize="contain"
+                backgroundRepeat="no-repeat"
+                backgroundPosition="center"
+              />
+              <Box marginTop="3">
+                <Stack>
+                  <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
+                    {el.tytul}
+                  </Text>
+                  <Text as="p">{el.opisOgolny}</Text>
+                </Stack>
+              </Box>
+              <Box marginTop="3">
+                <NextLink href={`/offer/${slugify(el.tytul, { lower: true })}`}>
+                  <ChakraLink color={YellowColor}>
+                    dowiedz się więcej
+                  </ChakraLink>
+                </NextLink>
+              </Box>
+            </Box>
+          );
+        })}
       </Flex>
       <Box textAlign="center" padding="2">
         <NextLink href="/#cennik">

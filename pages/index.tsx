@@ -1,7 +1,7 @@
-import { fetchAllEntries, TFetchAllEntries } from "../lib";
+import { entries, fetchAllEntries, TFetchAllEntries } from "../lib";
 import { Grid, Box, useColorModeValue, theme } from "@chakra-ui/react";
 
-import { useEffect } from "react";
+import { useMemo, useEffect } from "react";
 
 import {
   MoleculeMainNavBar,
@@ -14,16 +14,19 @@ import {
   OrganismContact,
 } from "../components";
 
+import { parseContentfulData, fetchSingleEntry } from "../lib";
+
 interface IProps {
-  contentfulItems: TFetchAllEntries;
+  contentfulData: TFetchAllEntries;
 }
 
-const Home = ({ contentfulItems }: IProps) => {
+const Home = ({ contentfulData }: IProps) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
 
-  useEffect(() => {
-    console.log(contentfulItems);
-  }, []);
+  const parsedcontentfulData = useMemo(
+    () => parseContentfulData(contentfulData),
+    [contentfulData]
+  );
 
   return (
     <Box
@@ -41,10 +44,10 @@ const Home = ({ contentfulItems }: IProps) => {
         gridTemplateColumns="[full-start] 2rem [center-start] 1fr [center-end] 2rem [full-end]"
         paddingTop="5"
       >
-        <OrganismOffer />
+        <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismDescription desc={[1, 2, 3, 4, 5]} />
-        <OrganismCons cons={[1, 2, 3, 4, 5]} />
+        <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
+        <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
         <OrganismContact />
@@ -83,7 +86,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { contentfulItems: res },
+    props: { contentfulData: res },
   };
 }
 

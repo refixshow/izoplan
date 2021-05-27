@@ -51,7 +51,7 @@ const OrganismContact = () => {
         fontWeight="bold"
         as="h1"
       >
-        Cennik
+        Kontakt
       </Text>
       <Flex
         id="contact"

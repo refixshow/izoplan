@@ -32,9 +32,10 @@ export const parseContentfulData = (contentfulData) => {
   }, {});
 };
 
-export const client = createClient({
-  space: process.env.CONTENTFULL_SPACE,
-  accessToken: process.env.CONTENTFULL_ACCESSTOKEN,
+// @ts-ignore
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFULL_SPACE,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFULL_ACCESSTOKEN,
 });
 
 export const fetchAllEntries: () => Promise<EntryCollection<unknown>> =

@@ -36,7 +36,7 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500,
 });
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
 function initMiddleware(middleware) {
   return (req, res) =>

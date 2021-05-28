@@ -32,8 +32,8 @@ const rateLimit = (options) => {
 };
 
 const limiter = rateLimit({
-  interval: 60 * 1000,
-  uniqueTokenPerInterval: 500,
+  interval: 60 * 1000 * 60 * 30,
+  uniqueTokenPerInterval: 99,
 });
 
 sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
@@ -76,7 +76,7 @@ const validateBody = initMiddleware(
       check("imie").isLength({ min: 1, max: 15 }),
       check("nazwisko").isLength({ min: 1, max: 25 }),
       check("email").isEmail(),
-      check("text"),
+      check("text").notEmpty(),
     ],
     validationResult
   )
@@ -91,7 +91,7 @@ export default async (req, res) => {
   try {
     await validateBody(req, res);
     await cors(req, res);
-    await limiter.check(res, 3, "CACHE_TOKEN");
+    await limiter.check(res, 1, "CACHE_TOKEN");
 
     const msg = {
       to: "adamscieszka@gmail.com",

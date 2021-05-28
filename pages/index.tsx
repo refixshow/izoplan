@@ -1,5 +1,14 @@
 import { entries, fetchAllEntries, TFetchAllEntries } from "../lib";
-import { Grid, Box, useColorModeValue, theme } from "@chakra-ui/react";
+import {
+  Grid,
+  Box,
+  Flex,
+  useColorModeValue,
+  theme,
+  Portal,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 
 import { useMemo } from "react";
 
@@ -7,12 +16,12 @@ import {
   MoleculeMainNavBar,
   MoleculeHero,
   MoleculeInvitation,
-  MoleculeFooterNav,
   OrganismOffer,
   OrganismDescription,
   OrganismCons,
   OrganismPricing,
   OrganismContact,
+  OrganismFooter,
 } from "../components";
 
 import { parseContentfulData } from "../lib";
@@ -24,6 +33,8 @@ interface IProps {
 const Home = ({ contentfulData }: IProps) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
 
+  const { isOpen, onToggle } = useDisclosure();
+
   const parsedcontentfulData = useMemo(
     () => parseContentfulData(contentfulData),
     [contentfulData]
@@ -31,12 +42,35 @@ const Home = ({ contentfulData }: IProps) => {
 
   return (
     <Box
+      overflow="hidden"
       fontSize="sm"
       backgroundColor={DarkColor}
       css={{
         scrollBehavior: "smooth",
       }}
     >
+      <Portal appendToParentPortal={false}>
+        <Flex
+          zIndex="1000"
+          position="fixed"
+          right={isOpen ? "0" : "-340px"}
+          top="15%"
+        >
+          <Button colorScheme="facebook" onClick={onToggle}>
+            Facebook
+          </Button>
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIzoplan-izolacje-pian%25C4%2585-PUR-102063341422126&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1158616097919420"
+            width="340"
+            height="500"
+            style={{ border: "none", overflow: "hidden" }}
+            scrolling="no"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </Flex>
+      </Portal>
       <MoleculeMainNavBar />
       <MoleculeHero />
       <Grid
@@ -47,24 +81,14 @@ const Home = ({ contentfulData }: IProps) => {
       >
         <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
+        <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
         <OrganismContact />
       </Grid>
-      <Box
-        as="footer"
-        background="blackAlpha.900"
-        gridColumn="full-start / full-end"
-      >
-        <MoleculeFooterNav />
-        <Box color="whiteAlpha.700">a</Box>
-        <Box color="whiteAlpha.700">b</Box>
-        <Box color="whiteAlpha.700">c</Box>
-        <Box color="whiteAlpha.700">d</Box>
-        <Box color="whiteAlpha.700">e</Box>
-      </Box>
+
+      <OrganismFooter />
     </Box>
   );
 };

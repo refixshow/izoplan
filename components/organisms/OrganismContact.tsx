@@ -60,7 +60,12 @@ const OrganismContact = () => {
         alignItems="center"
         as="section"
       >
-        <Box flex=".3" height="25rem" position="relative">
+        <Box
+          display={["none", "none", "block"]}
+          flex=".3"
+          height="25rem"
+          position="relative"
+        >
           <NextImage src="/assets/ok.jpg" alt="abc" layout="fill" />
         </Box>
         <Box my={8} textAlign="left">

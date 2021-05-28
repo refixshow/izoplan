@@ -96,9 +96,7 @@ const OrganismOffer = ({ offer }: IProps) => {
               </Box>
               <Box marginTop="3">
                 <NextLink href={`/offer/${slugify(el.tytul, { lower: true })}`}>
-                  <ChakraLink color={YellowColor}>
-                    dowiedz się więcej
-                  </ChakraLink>
+                  <ChakraLink>dowiedz się więcej</ChakraLink>
                 </NextLink>
               </Box>
             </Box>

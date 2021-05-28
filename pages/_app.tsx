@@ -6,12 +6,18 @@ import { customTheme } from "../lib";
 
 import "swiper/swiper-bundle.css";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+import { motion } from "framer-motion";
+
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
     <ChakraProvider theme={customTheme}>
-      <AnimatePresence exitBeforeEnter>
+      <motion.div
+        key={router.route}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <Component {...pageProps} />
-      </AnimatePresence>
+      </motion.div>
     </ChakraProvider>
   );
 };

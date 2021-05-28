@@ -24,6 +24,10 @@ import {
   OrganismFooter,
 } from "../components";
 
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
+
 import { parseContentfulData } from "../lib";
 
 interface IProps {
@@ -41,7 +45,8 @@ const Home = ({ contentfulData }: IProps) => {
   );
 
   return (
-    <Box
+    <MotionBox
+      exit={{ opacity: 0 }}
       overflow="hidden"
       fontSize="sm"
       backgroundColor={DarkColor}
@@ -89,7 +94,7 @@ const Home = ({ contentfulData }: IProps) => {
       </Grid>
 
       <OrganismFooter />
-    </Box>
+    </MotionBox>
   );
 };
 

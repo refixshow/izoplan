@@ -6,12 +6,15 @@ import {
   Stack,
   Button,
   useColorMode,
-  useColorModeValue,
-  theme,
   Link as ChakraLink,
 } from "@chakra-ui/react";
 import { TriangleDownIcon } from "@chakra-ui/icons";
 import slugify from "slugify";
+
+import { InView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
 
 interface IProps {
   offer: any[];
@@ -20,10 +23,6 @@ interface IProps {
 const OrganismOffer = ({ offer }: IProps) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
-  const YellowColor = useColorModeValue(
-    theme.colors.red[400],
-    theme.colors.yellow[400]
-  );
 
   return (
     <Box
@@ -56,50 +55,61 @@ const OrganismOffer = ({ offer }: IProps) => {
         </Text>
         {offer.map((el) => {
           return (
-            <Box
-              key={el.tytul}
-              textAlign="center"
-              width={["100%", "44%", "44%", "22%"]}
-              padding="5"
-              margin="3"
-              boxShadow={
-                isDark
-                  ? "0px 0px 10px rgb(0 0 0 / 30%)"
-                  : "0px 0px 10px rgb(0 0 0 / 20%)"
-              }
-              transition="box-shadow .3s"
-              _hover={{
-                boxShadow: isDark
-                  ? "0px 0px 10px rgb(0 0 0 / 50%)"
-                  : "0px 0px 10px rgb(0 0 0 / 30%)",
-              }}
-              _active={{
-                boxShadow: isDark
-                  ? "0px 0px 10px rgb(0 0 0 / 50%)"
-                  : "0px 0px 10px rgb(0 0 0 / 30%)",
-              }}
-            >
-              <Box
-                height="90px"
-                backgroundImage="url('/assets/stropy.png')"
-                backgroundSize="contain"
-                backgroundRepeat="no-repeat"
-                backgroundPosition="center"
-              />
-              <Box marginTop="3">
-                <Stack>
-                  <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
-                    {el.tytul}
-                  </Text>
-                  <Text as="p">{el.opisOgolny}</Text>
-                </Stack>
-              </Box>
-              <Box marginTop="3">
-                <NextLink href={`/offer/${slugify(el.tytul, { lower: true })}`}>
-                  <ChakraLink>dowiedz się więcej</ChakraLink>
-                </NextLink>
-              </Box>
-            </Box>
+            <InView threshold={0.25}>
+              {({ ref, inView }) => (
+                <MotionBox
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={
+                    inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+                  }
+                  ref={ref}
+                  key={el.tytul}
+                  textAlign="center"
+                  width={["100%", "44%", "44%", "22%"]}
+                  padding="5"
+                  margin="3"
+                  boxShadow={
+                    isDark
+                      ? "0px 0px 10px rgb(0 0 0 / 30%)"
+                      : "0px 0px 10px rgb(0 0 0 / 20%)"
+                  }
+                  transition="box-shadow .3s"
+                  _hover={{
+                    boxShadow: isDark
+                      ? "0px 0px 10px rgb(0 0 0 / 50%)"
+                      : "0px 0px 10px rgb(0 0 0 / 30%)",
+                  }}
+                  _active={{
+                    boxShadow: isDark
+                      ? "0px 0px 10px rgb(0 0 0 / 50%)"
+                      : "0px 0px 10px rgb(0 0 0 / 30%)",
+                  }}
+                >
+                  <Box
+                    height="90px"
+                    backgroundImage="url('/assets/stropy.png')"
+                    backgroundSize="contain"
+                    backgroundRepeat="no-repeat"
+                    backgroundPosition="center"
+                  />
+                  <Box marginTop="3">
+                    <Stack>
+                      <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
+                        {el.tytul}
+                      </Text>
+                      <Text as="p">{el.opisOgolny}</Text>
+                    </Stack>
+                  </Box>
+                  <Box marginTop="3">
+                    <NextLink
+                      href={`/offer/${slugify(el.tytul, { lower: true })}`}
+                    >
+                      <ChakraLink>dowiedz się więcej</ChakraLink>
+                    </NextLink>
+                  </Box>
+                </MotionBox>
+              )}
+            </InView>
           );
         })}
       </Flex>

@@ -1,12 +1,18 @@
 import { fetchSingleEntry, entries } from "../../lib";
 import slugify from "slugify";
+import { Box } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { MoleculeMainNavBar } from "../../components";
+
+const MotionBox = motion(Box);
 
 const Offer = ({ params, parsedRes }) => {
   return (
-    <>
+    <MotionBox exit={{ opacity: 0 }}>
+      <MoleculeMainNavBar />
       <pre>{JSON.stringify(params, null, 2)}</pre>
       <pre>{JSON.stringify(parsedRes, null, 2)}</pre>
-    </>
+    </MotionBox>
   );
 };
 

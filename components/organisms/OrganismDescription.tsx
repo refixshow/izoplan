@@ -19,6 +19,7 @@ const OrganismDescription = ({ desc }: IProps) => {
 
   return (
     <Box
+      id="description"
       padding="3rem"
       backgroundColor={grayColor}
       gridColumn="full-start / full-end"

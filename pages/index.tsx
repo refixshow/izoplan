@@ -5,8 +5,9 @@ import { useMemo } from "react";
 
 import {
   MoleculeMainNavBar,
-  MoleculeInvitation,
   MoleculeHero,
+  MoleculeInvitation,
+  MoleculeFooterNav,
   OrganismOffer,
   OrganismDescription,
   OrganismCons,
@@ -51,21 +52,13 @@ const Home = ({ contentfulData }: IProps) => {
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
         <OrganismContact />
-
-        <Box
-          as="nav"
-          gridColumn="full-start / full-end"
-          paddingRight="2rem"
-          paddingLeft="2rem"
-        >
-          navxd
-        </Box>
       </Grid>
       <Box
         as="footer"
         background="blackAlpha.900"
         gridColumn="full-start / full-end"
       >
+        <MoleculeFooterNav />
         <Box color="whiteAlpha.700">a</Box>
         <Box color="whiteAlpha.700">b</Box>
         <Box color="whiteAlpha.700">c</Box>

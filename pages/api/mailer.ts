@@ -100,7 +100,9 @@ export default async (req, res) => {
       text: `${req.body.text} z adresu ${req.body.email}`,
     };
 
-    await sgMail.send(msg);
+    const accc = await sgMail.send(msg);
+
+    console.log(accc);
     res.statusCode = 200;
     res.json({ name: "John Doe" });
   } catch (err) {

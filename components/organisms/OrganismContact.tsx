@@ -1,6 +1,6 @@
 import NextImage from "next/image";
-import { useCallback } from "react";
-
+import { useCallback, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
   Box,
@@ -11,8 +11,13 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 const OrganismContact = () => {
+  const reRef = useRef<ReCAPTCHA>();
+
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
+
+    const token = await reRef.current.executeAsync();
+    reRef.current.reset();
 
     const res = await fetch("/api/mailer", {
       body: JSON.stringify({
@@ -20,6 +25,7 @@ const OrganismContact = () => {
         nazwisko: event.target.nazwisko.value,
         email: event.target.email.value,
         text: event.target.text.value,
+        token,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +85,6 @@ const OrganismContact = () => {
                 required
               />
             </FormControl>
-
             <FormControl mt={4}>
               <FormLabel>Nazwisko</FormLabel>
               <Input
@@ -89,6 +94,7 @@ const OrganismContact = () => {
                 required
               />
             </FormControl>
+
             <FormControl mt={4}>
               <FormLabel>E-mail</FormLabel>
               <Input
@@ -105,6 +111,13 @@ const OrganismContact = () => {
                 maxLength={800}
                 placeholder="Wpisz swoją wiadomość..."
                 required
+              />
+            </FormControl>
+            <FormControl>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_CLIENT_RECAPTCHA}
+                size="normal"
+                ref={reRef}
               />
             </FormControl>
             <FormControl mt={4}>

@@ -70,6 +70,22 @@ const cors = initMiddleware(
   })
 );
 
+const validateReCAPTCHA = async (token: string): Promise<boolean> => {
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    body: JSON.stringify({
+      secret: process.env.NEXT_PUBLIC_SECRET_RECAPTCHA,
+      response: token,
+    }),
+  });
+
+  const response = await res.json();
+
+  console.log(response, "FROM GOOGLE FKIN SHITT");
+
+  return true;
+};
+
 const validateBody = initMiddleware(
   validateMiddleware(
     [
@@ -77,6 +93,7 @@ const validateBody = initMiddleware(
       check("nazwisko").isLength({ min: 1, max: 25 }),
       check("email").isEmail(),
       check("text").notEmpty(),
+      check("token").notEmpty(),
     ],
     validationResult
   )
@@ -92,6 +109,7 @@ export default async (req, res) => {
     await validateBody(req, res);
     await cors(req, res);
     await limiter.check(res, 1, "CACHE_TOKEN");
+    await validateReCAPTCHA(req.body.token);
 
     const msg = {
       to: "adamscieszka@gmail.com",

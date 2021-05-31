@@ -1,4 +1,5 @@
 import NextLink from "next/link";
+import NextImage from "next/image";
 import {
   Box,
   Flex,
@@ -14,7 +15,7 @@ import slugify from "slugify";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
 
 interface IProps {
   offer: any[];
@@ -57,7 +58,10 @@ const OrganismOffer = ({ offer }: IProps) => {
           return (
             <InView threshold={0.25}>
               {({ ref, inView }) => (
-                <MotionBox
+                <MotionFlex
+                  alignItems="center"
+                  justifyContent="center"
+                  direction="column"
                   initial={{ opacity: 0, x: -50 }}
                   animate={
                     inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
@@ -85,13 +89,13 @@ const OrganismOffer = ({ offer }: IProps) => {
                       : "0px 0px 10px rgb(0 0 0 / 30%)",
                   }}
                 >
-                  <Box
-                    height="90px"
-                    backgroundImage="url('/assets/stropy.png')"
-                    backgroundSize="contain"
-                    backgroundRepeat="no-repeat"
-                    backgroundPosition="center"
-                  />
+                  <Box position="relative" width="200px" height="150px">
+                    <NextImage
+                      src={`http:${el.ikona.fields.file.url}`}
+                      alt={el.ikona.fields.title}
+                      layout="fill"
+                    />
+                  </Box>
                   <Box marginTop="3">
                     <Stack>
                       <Text as="h3" padding="1" fontSize="md" fontWeight="bold">
@@ -107,7 +111,7 @@ const OrganismOffer = ({ offer }: IProps) => {
                       <ChakraLink>dowiedz się więcej</ChakraLink>
                     </NextLink>
                   </Box>
-                </MotionBox>
+                </MotionFlex>
               )}
             </InView>
           );

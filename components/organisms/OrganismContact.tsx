@@ -115,7 +115,7 @@ const OrganismContact = () => {
             </FormControl>
             <FormControl>
               <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_CLIENT_RECAPTCHA}
+                sitekey={process.env.NEXT_PUBLIC_SITE_RECAPTCHA}
                 size="normal"
                 ref={reRef}
               />

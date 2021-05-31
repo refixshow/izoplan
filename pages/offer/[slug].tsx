@@ -38,7 +38,6 @@ export async function getStaticProps({ params }) {
     return slugify(item.fields.tytul, { lower: true }) === params.slug;
   });
 
-  console.log(parsedRes);
   return {
     props: { params, parsedRes },
   };

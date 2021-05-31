@@ -1,4 +1,4 @@
-import { Flex, Text, theme, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 interface IProps {
   text: string;

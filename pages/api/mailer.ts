@@ -81,9 +81,7 @@ const validateReCAPTCHA = async (token: string): Promise<boolean> => {
 
   const response = await res.json();
 
-  console.log(response, "FROM GOOGLE FKIN SHITT");
-
-  return true;
+  return response;
 };
 
 const validateBody = initMiddleware(
@@ -109,7 +107,9 @@ export default async (req, res) => {
     await validateBody(req, res);
     await cors(req, res);
     await limiter.check(res, 10, "CACHE_TOKEN");
-    await validateReCAPTCHA(req.body.token);
+    const google = await validateReCAPTCHA(req.body.token);
+
+    console.log(google);
 
     const msg = {
       to: "adamscieszka@gmail.com",
@@ -121,7 +121,7 @@ export default async (req, res) => {
     await sgMail.send(msg);
 
     res.statusCode = 200;
-    res.json({ name: "John Doe" });
+    res.json({ name: "John Doe", google });
   } catch (err) {
     res.json({ error: err });
   }

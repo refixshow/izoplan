@@ -106,9 +106,9 @@ export default async (req, res) => {
   );
 
   try {
-    // await validateBody(req, res);
-    // await cors(req, res);
-    // await limiter.check(res, 10, "CACHE_TOKEN");
+    await validateBody(req, res);
+    await cors(req, res);
+    await limiter.check(res, 10, "CACHE_TOKEN");
     await validateReCAPTCHA(req.body.token);
 
     const msg = {

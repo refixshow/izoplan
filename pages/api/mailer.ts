@@ -32,7 +32,7 @@ const rateLimit = (options) => {
 };
 
 const limiter = rateLimit({
-  interval: 60 * 1000 * 60 * 30,
+  interval: 60 * 1000,
   uniqueTokenPerInterval: 99,
 });
 
@@ -106,9 +106,9 @@ export default async (req, res) => {
   );
 
   try {
-    await validateBody(req, res);
-    await cors(req, res);
-    await limiter.check(res, 1, "CACHE_TOKEN");
+    // await validateBody(req, res);
+    // await cors(req, res);
+    // await limiter.check(res, 10, "CACHE_TOKEN");
     await validateReCAPTCHA(req.body.token);
 
     const msg = {

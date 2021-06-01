@@ -71,12 +71,12 @@ const cors = initMiddleware(
 );
 
 const validateReCAPTCHA = async (token: string): Promise<boolean> => {
-  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+  const VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
+
+  const res = await fetch(VERIFY_URL, {
     method: "POST",
-    body: JSON.stringify({
-      secret: process.env.NEXT_PUBLIC_SECRET_RECAPTCHA,
-      response: token,
-    }),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${process.env.NEXT_PUBLIC_SECRET_RECAPTCHA}&response=${token}`,
   });
 
   const response = await res.json();

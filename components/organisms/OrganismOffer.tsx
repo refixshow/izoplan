@@ -56,7 +56,7 @@ const OrganismOffer = ({ offer }: IProps) => {
         </Text>
         {offer.map((el) => {
           return (
-            <InView threshold={0.25}>
+            <InView key={el.tytul} threshold={0.25}>
               {({ ref, inView }) => (
                 <MotionFlex
                   alignItems="center"
@@ -67,7 +67,6 @@ const OrganismOffer = ({ offer }: IProps) => {
                     inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
                   }
                   ref={ref}
-                  key={el.tytul}
                   textAlign="center"
                   width={["100%", "44%", "44%", "22%"]}
                   padding="5"
@@ -92,7 +91,7 @@ const OrganismOffer = ({ offer }: IProps) => {
                   <Box position="relative" width="200px" height="150px">
                     <NextImage
                       src={`http:${el.ikona.fields.file.url}`}
-                      alt={el.ikona.fields.title}
+                      alt={slugify(el.tytul, { lower: true })}
                       layout="fill"
                     />
                   </Box>

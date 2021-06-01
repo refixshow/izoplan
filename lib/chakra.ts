@@ -4,8 +4,9 @@ const customTheme = extendTheme({
   config: { initialColorMode: "light", useSystemColorMode: true },
   styles: {
     global: {
-      scrollBehavior: "smoth",
-      width: 1000,
+      html: {
+        scrollBehavior: "smooth",
+      },
     },
   },
 });

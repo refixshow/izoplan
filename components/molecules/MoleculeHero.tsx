@@ -7,7 +7,7 @@ const Hero = () => {
       <Flex
         position="relative"
         padding="4"
-        height="400"
+        height="65vh"
         alignItems="center"
         justifyContent="space-evenly"
         direction="column"

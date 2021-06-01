@@ -70,18 +70,24 @@ const cors = initMiddleware(
   })
 );
 
-const validateReCAPTCHA = async (token: string): Promise<boolean> => {
+const validateReCAPTCHA = async (token: string) => {
   const VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
 
-  const res = await fetch(VERIFY_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${process.env.NEXT_PUBLIC_SECRET_RECAPTCHA}&response=${token}`,
-  });
+  try {
+    const res = await fetch(VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${process.env.NEXT_PUBLIC_SECRET_RECAPTCHA}&response=${token}`,
+    });
 
-  const response = await res.json();
+    const response = await res.json();
 
-  return response;
+    if (!response.success) {
+      throw new Error("ReCAPTCHA WARN");
+    }
+  } catch (err) {
+    throw new Error(err);
+  }
 };
 
 const validateBody = initMiddleware(
@@ -107,9 +113,7 @@ export default async (req, res) => {
     await validateBody(req, res);
     await cors(req, res);
     await limiter.check(res, 10, "CACHE_TOKEN");
-    const google = await validateReCAPTCHA(req.body.token);
-
-    console.log(google);
+    await validateReCAPTCHA(req.body.token);
 
     const msg = {
       to: "adamscieszka@gmail.com",
@@ -121,7 +125,7 @@ export default async (req, res) => {
     await sgMail.send(msg);
 
     res.statusCode = 200;
-    res.json({ name: "John Doe", google });
+    res.json({ name: "John Doe" });
   } catch (err) {
     res.json({ error: err });
   }

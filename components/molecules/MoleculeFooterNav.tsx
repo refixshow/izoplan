@@ -3,7 +3,7 @@ import NextLink from "next/link";
 
 const MoleculeFooterNav = () => {
   return (
-    <Box margin="2" as="nav" paddingRight="2rem" paddingLeft="2rem">
+    <Box as="nav" paddingX="1rem">
       <NextLink href="/">
         <ChakraLink margin="2">start</ChakraLink>
       </NextLink>

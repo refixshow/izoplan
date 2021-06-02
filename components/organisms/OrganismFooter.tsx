@@ -6,10 +6,9 @@ import { Link as ChakraLink } from "@chakra-ui/react";
 const OrganismFooter = () => {
   return (
     <Flex
-      padding="6"
+      padding="1rem"
       as="footer"
       background="blackAlpha.900"
-      gridColumn="full-start / full-end"
       direction="column"
       color="gray.200"
       alignItems="center"

@@ -78,14 +78,14 @@ const MainNavBar = () => {
         justifyContent="space-between"
         padding={3}
       >
-        <Box>
+        <Box lineHeight="0">
           <NextLink href="/">
             <ChakraLink>
               <NextImage
                 src="/assets/logo.png"
-                alt="abc"
-                width={64}
-                height={64}
+                alt="logo"
+                height="74px"
+                width="74px"
               />
             </ChakraLink>
           </NextLink>

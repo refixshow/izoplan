@@ -1,4 +1,5 @@
 import NextImage from "next/image";
+import NextLink from "next/link";
 import { Flex, Stack, Text, Box, Button } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,12 +16,7 @@ interface IProps {
 
 const OrganismCons = ({ cons }: IProps) => {
   return (
-    <Box
-      as="section"
-      gridColumn="center-start / center-end"
-      overflow="hidden"
-      padding="3"
-    >
+    <Box padding="1rem">
       <Box position="relative" overflow="hidden">
         <Swiper
           effect="coverflow"
@@ -78,8 +74,15 @@ const OrganismCons = ({ cons }: IProps) => {
           consequatur sapiente dolore, qui maiores saepe?
         </Text>
         <Box>
-          <Button margin="3">cennik</Button>
-          <Button margin="3">kontakt</Button>
+          <NextLink href="/#description">
+            <Button margin="3">co robimy</Button>
+          </NextLink>
+
+          <NextLink href="/#contact">
+            <Button variant="outline" margin="3">
+              kontakt
+            </Button>
+          </NextLink>
         </Box>
       </Box>
     </Box>

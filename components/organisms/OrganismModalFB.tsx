@@ -8,8 +8,8 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Flex,
   ModalFooter,
+  Flex,
 } from "@chakra-ui/react";
 
 const OrganismModalFB = () => {

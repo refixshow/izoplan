@@ -18,12 +18,7 @@ const OrganismDescription = ({ desc }: IProps) => {
   );
 
   return (
-    <Box
-      id="description"
-      padding="3rem"
-      backgroundColor={grayColor}
-      gridColumn="full-start / full-end"
-    >
+    <Box id="description" padding="1rem" backgroundColor={grayColor}>
       {desc.map((el) => {
         return (
           <Flex

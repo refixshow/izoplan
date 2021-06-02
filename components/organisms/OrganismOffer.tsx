@@ -26,12 +26,7 @@ const OrganismOffer = ({ offer }: IProps) => {
   const isDark = colorMode === "dark";
 
   return (
-    <Box
-      paddingBottom="2rem"
-      as="section"
-      gridColumn="center-start / center-end"
-      id="offer"
-    >
+    <Box padding="1rem" as="section" id="offer">
       <Flex flexWrap="wrap" alignItems="center" justifyContent="center">
         <Text
           _after={{
@@ -117,7 +112,7 @@ const OrganismOffer = ({ offer }: IProps) => {
         })}
       </Flex>
       <Box textAlign="center" padding="2">
-        <NextLink href="/#cennik">
+        <NextLink href="/#pricing">
           <Button
             padding={5}
             leftIcon={<TriangleDownIcon />}

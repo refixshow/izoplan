@@ -37,7 +37,7 @@ const OrganismContact = () => {
   }, []);
 
   return (
-    <Box gridColumn="center-start / center-end">
+    <Box as="section" id="contact" padding="1rem">
       <Text
         _after={{
           content: '""',
@@ -60,11 +60,9 @@ const OrganismContact = () => {
         Kontakt
       </Text>
       <Flex
-        id="contact"
         flexDirection={["column", "column", "row"]}
         justifyContent="space-evenly"
         alignItems="center"
-        as="section"
       >
         <Box
           display={["none", "none", "block"]}

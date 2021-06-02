@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 import {
   MoleculeMainNavBar,
-  MoleculeHero,
+  OrganismHero,
   MoleculeInvitation,
   OrganismOffer,
   OrganismDescription,
@@ -44,10 +44,10 @@ const Home = ({ contentfulData }: IProps) => {
       }}
     >
       <MoleculeMainNavBar />
-      <MoleculeHero />
+      <OrganismHero />
       <Box as="main">
         <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
-        <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
+        <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
         <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />

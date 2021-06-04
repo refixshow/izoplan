@@ -16,8 +16,29 @@ interface IProps {
 
 const OrganismCons = ({ cons }: IProps) => {
   return (
-    <Box padding="1rem">
+    <Box id="cons" padding="1rem">
       <Box position="relative" overflow="hidden">
+        <Text
+          _after={{
+            content: '""',
+            position: "absolute",
+            width: "80%",
+            height: "3px",
+            backgroundColor: "red.600",
+            bottom: "-3px",
+            left: "0",
+            borderRadius: "3px",
+          }}
+          position="relative"
+          width="100%"
+          padding="2"
+          margin="4"
+          fontSize="lg"
+          fontWeight="bold"
+          as="h1"
+        >
+          Korzyści
+        </Text>
         <Swiper
           effect="coverflow"
           centeredSlides

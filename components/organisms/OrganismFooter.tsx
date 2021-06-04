@@ -1,4 +1,4 @@
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, List, ListItem } from "@chakra-ui/react";
 import { MoleculeFooterNav } from "../molecules";
 import NextLink from "next/link";
 import { Link as ChakraLink } from "@chakra-ui/react";
@@ -15,10 +15,32 @@ const OrganismFooter = () => {
       justifyContent="center"
     >
       <MoleculeFooterNav />
-      <Box margin="2">logo fb</Box>
-      <Box margin="2">pomoc</Box>
-      <Box margin="2">izoplan</Box>
-      <Box margin="2">
+      <Box textAlign="center">
+        <Text padding="1" fontWeight="bold" margin="1" as="h4">
+          Kontakt
+        </Text>
+        <List>
+          <ListItem padding="1">
+            <Text as="h5" fontWeight="bold">
+              e-mail:
+            </Text>
+            <NextLink href="mailto:izoplan@o2.pl">izoplan@o2.pl</NextLink>
+          </ListItem>
+          <ListItem padding="1">
+            <Text as="h5" fontWeight="bold">
+              tel:
+            </Text>
+            <NextLink href="tel:+48733388460">+48 733 388 460</NextLink>
+          </ListItem>
+          <ListItem padding="1">
+            <Text as="h5" fontWeight="bold">
+              tel:
+            </Text>
+            <NextLink href="tel:+48513418049">+48 513 418 049</NextLink>
+          </ListItem>
+        </List>
+      </Box>
+      <Box>
         <Text>
           &copy;{" "}
           <NextLink

@@ -13,6 +13,7 @@ import {
   OrganismPricing,
   OrganismContact,
   OrganismFooter,
+  OrganismModalFB,
 } from "../components";
 
 import { motion } from "framer-motion";
@@ -39,10 +40,8 @@ const Home = ({ contentfulData }: IProps) => {
       overflow="hidden"
       fontSize="sm"
       backgroundColor={DarkColor}
-      css={{
-        scrollBehavior: "smooth",
-      }}
     >
+      <OrganismModalFB />
       <MoleculeMainNavBar />
       <OrganismHero />
       <Box as="main">
@@ -54,7 +53,6 @@ const Home = ({ contentfulData }: IProps) => {
         <OrganismPricing />
         <OrganismContact />
       </Box>
-
       <OrganismFooter />
     </MotionBox>
   );

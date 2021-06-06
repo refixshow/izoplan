@@ -10,7 +10,7 @@ SwiperCore.use([EffectCube]);
 
 const OrganismHero = () => {
   return (
-    <Flex paddingX="1rem" justifyContent="center">
+    <Flex paddingX={["1rem"]} justifyContent="center">
       <Box width="100%">
         <Swiper
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -47,19 +47,28 @@ const OrganismHero = () => {
           </SwiperSlide>
         </Swiper>
 
-        <Stack marginTop="3" textAlign="center">
-          <Text as="h1" fontSize="xl" fontWeight="bold">
+        <Stack marginTop={["2rem", "1"]} textAlign="center">
+          <Text
+            as="h1"
+            fontSize={["xl", "2xl"]}
+            paddingX={[0, "1rem"]}
+            fontWeight="bold"
+          >
             Profesjonalne świadczenia usług w zakresie izolacji termicznej
             budynków
           </Text>
           <Text>
             <NextLink href="/#offer">
-              <Button margin="2" leftIcon={<ArrowDownIcon />}>
+              <Button margin={[2, 3]} leftIcon={<ArrowDownIcon />}>
                 oferta
               </Button>
             </NextLink>
             <NextLink href="/#contact">
-              <Button margin="2" leftIcon={<EmailIcon />} variant="outline">
+              <Button
+                margin={[2, 3]}
+                leftIcon={<EmailIcon />}
+                variant="outline"
+              >
                 kontakt
               </Button>
             </NextLink>

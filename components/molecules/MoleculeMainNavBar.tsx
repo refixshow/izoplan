@@ -21,7 +21,6 @@ import {
 import { HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
 
 const MainNavBar = () => {
-  const DrawerTogglerButtonRef = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,7 +33,7 @@ const MainNavBar = () => {
           isOpen={isOpen}
           placement="right"
           onClose={onClose}
-          finalFocusRef={DrawerTogglerButtonRef}
+          returnFocusOnClose={false}
         >
           <DrawerOverlay />
           <DrawerContent>
@@ -48,25 +47,30 @@ const MainNavBar = () => {
                 direction="column"
               >
                 <NextLink href="/">
-                  <ChakraLink>Start</ChakraLink>
+                  <ChakraLink padding="1">start</ChakraLink>
                 </NextLink>
-                <NextLink href="/">
-                  <ChakraLink>Oferta</ChakraLink>
+                <NextLink href="/#offer">
+                  <ChakraLink padding="1">oferta</ChakraLink>
                 </NextLink>
-                <NextLink href="/">
-                  <ChakraLink>O nas</ChakraLink>
+                <NextLink href="/#cons">
+                  <ChakraLink padding="1">korzyści</ChakraLink>
                 </NextLink>
-                <NextLink href="/">
-                  <ChakraLink>Co robimy</ChakraLink>
+                <NextLink href="/#description">
+                  <ChakraLink padding="1">nasza praca</ChakraLink>
                 </NextLink>
-                <NextLink href="/">
-                  <ChakraLink>Kontakt</ChakraLink>
+                <NextLink href="/#contact">
+                  <ChakraLink padding="1">kontakt</ChakraLink>
+                </NextLink>
+                <NextLink href="/gallery">
+                  <ChakraLink padding="1">galeria</ChakraLink>
                 </NextLink>
               </Flex>
             </DrawerBody>
             <DrawerFooter>
               <Flex>
-                <Box>facebook</Box>
+                <NextLink href="/">
+                  <ChakraLink>facebook</ChakraLink>
+                </NextLink>
               </Flex>
             </DrawerFooter>
           </DrawerContent>
@@ -76,7 +80,7 @@ const MainNavBar = () => {
         as="nav"
         alignItems="center"
         justifyContent="space-between"
-        padding={3}
+        padding={[3, "2rem"]}
       >
         <Box lineHeight="0">
           <NextLink href="/">
@@ -93,11 +97,10 @@ const MainNavBar = () => {
         <Flex>
           <Box>
             <IconButton
-              ref={DrawerTogglerButtonRef}
               mt={2}
               mr={2}
               aria-label="Open Menu"
-              size="md"
+              size="lg"
               icon={<HamburgerIcon />}
               onClick={onOpen}
             />
@@ -107,7 +110,7 @@ const MainNavBar = () => {
               mt={2}
               mr={2}
               aria-label="Toggle Color"
-              size="md"
+              size="lg"
               icon={isDark ? <SunIcon /> : <MoonIcon />}
               onClick={toggleColorMode}
             />

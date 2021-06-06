@@ -24,19 +24,25 @@ const OrganismFooter = () => {
             <Text as="h5" fontWeight="bold">
               e-mail:
             </Text>
-            <NextLink href="mailto:izoplan@o2.pl">izoplan@o2.pl</NextLink>
+            <NextLink href="mailto:izoplan@o2.pl">
+              <ChakraLink>izoplan@o2.pl</ChakraLink>
+            </NextLink>
           </ListItem>
           <ListItem padding="1">
             <Text as="h5" fontWeight="bold">
               tel:
             </Text>
-            <NextLink href="tel:+48733388460">+48 733 388 460</NextLink>
+            <NextLink href="tel:+48733388460">
+              <ChakraLink>+48 733 388 460</ChakraLink>
+            </NextLink>
           </ListItem>
           <ListItem padding="1">
             <Text as="h5" fontWeight="bold">
               tel:
             </Text>
-            <NextLink href="tel:+48513418049">+48 513 418 049</NextLink>
+            <NextLink href="tel:+48513418049">
+              <ChakraLink>+48 513 418 049</ChakraLink>
+            </NextLink>
           </ListItem>
         </List>
       </Box>

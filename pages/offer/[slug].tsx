@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { fetchSingleEntry, entries } from "../../lib";
 import slugify from "slugify";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Stack, useColorModeValue, theme } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
   MoleculeMainNavBar,
@@ -13,8 +13,14 @@ import {
 const MotionBox = motion(Box);
 
 const Offer = ({ pageData }) => {
+  const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
+
   return (
-    <MotionBox overflow="hidden" exit={{ opacity: 0 }}>
+    <MotionBox
+      overflow="hidden"
+      backgroundColor={DarkColor}
+      exit={{ opacity: 0 }}
+    >
       <Head>
         <meta name="robots" content="index, follow" />
         <meta name="language" content="Polish" />
@@ -57,11 +63,16 @@ const Offer = ({ pageData }) => {
         >
           {pageData.fields.tytul}
         </Text>
-        <Box as="article">
-          <Text as="h3">{pageData.fields.opisOgolny}</Text>
-          {pageData.fields.opisSzczegolowy.content[0].content[0].value}
+        <Box as="article" padding="1rem">
+          <Stack>
+            <Text as="h2" fontSize="xl" fontWeight="bold">
+              {pageData.fields.opisOgolny}
+            </Text>
+            <Text>
+              {pageData.fields.opisSzczegolowy.content[0].content[0].value}
+            </Text>
+          </Stack>
         </Box>
-        <pre>{JSON.stringify(pageData, null, 2)}</pre>
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
         <OrganismContact />
       </Box>

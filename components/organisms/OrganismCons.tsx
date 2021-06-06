@@ -16,7 +16,7 @@ interface IProps {
 
 const OrganismCons = ({ cons }: IProps) => {
   return (
-    <Box id="cons" padding="1rem">
+    <Box id="cons" padding={["1rem", "2rem"]}>
       <Box position="relative" overflow="hidden">
         <Text
           _after={{
@@ -32,10 +32,10 @@ const OrganismCons = ({ cons }: IProps) => {
           position="relative"
           width="100%"
           padding="2"
-          margin="4"
-          fontSize="lg"
+          margin={[4, 6]}
+          fontSize={["lg", "xl"]}
           fontWeight="bold"
-          as="h1"
+          as="h3"
         >
           Korzyści
         </Text>
@@ -51,7 +51,7 @@ const OrganismCons = ({ cons }: IProps) => {
               slidesPerView: 1,
             },
             "768": {
-              slidesPerView: 3,
+              slidesPerView: 2,
             },
           }}
         >
@@ -75,7 +75,7 @@ const OrganismCons = ({ cons }: IProps) => {
                     <Text as="h2" fontWeight="bold">
                       {el.tytul}
                     </Text>
-                    <Text as="p">{el.opis}</Text>
+                    <Text as="p">{el.opis.content[0].content[0].value}</Text>
                   </Stack>
                 </Flex>
               </SwiperSlide>
@@ -88,7 +88,7 @@ const OrganismCons = ({ cons }: IProps) => {
           marginTop="2"
           marginBottom="2"
           as="h3"
-          fontSize="md"
+          fontSize={["md", "lg"]}
           fontWeight="bold"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
@@ -96,11 +96,11 @@ const OrganismCons = ({ cons }: IProps) => {
         </Text>
         <Box>
           <NextLink href="/#description">
-            <Button margin="3">co robimy</Button>
+            <Button margin={[2, 3]}>co robimy</Button>
           </NextLink>
 
           <NextLink href="/#contact">
-            <Button variant="outline" margin="3">
+            <Button variant="outline" margin={[2, 3]}>
               kontakt
             </Button>
           </NextLink>

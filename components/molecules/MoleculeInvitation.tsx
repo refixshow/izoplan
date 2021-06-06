@@ -41,7 +41,7 @@ const MoleculeInvitation = ({ text, yellow, popup }: IProps) => {
       padding="10"
     >
       {popup ? (
-        <Text ref={ref} as="h2" fontSize="md" fontWeight="bold">
+        <>
           <Modal isCentered isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
@@ -67,10 +67,12 @@ const MoleculeInvitation = ({ text, yellow, popup }: IProps) => {
               </ModalFooter>
             </ModalContent>
           </Modal>
-          {text}
-        </Text>
+          <Text ref={ref} as="h2" fontSize={["xl"]} fontWeight="bold">
+            {text}
+          </Text>
+        </>
       ) : (
-        <Text as="h2" fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize={["xl"]} fontWeight="bold">
           {text}
         </Text>
       )}

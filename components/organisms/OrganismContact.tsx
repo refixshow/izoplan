@@ -9,15 +9,27 @@ import {
   Input,
   Text,
   Textarea,
+  useDisclosure,
 } from "@chakra-ui/react";
 const OrganismContact = () => {
+  const { isOpen, onToggle } = useDisclosure({ isOpen: false });
   const reRef = useRef<ReCAPTCHA>();
 
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
 
-    const token = await reRef.current.executeAsync();
-    reRef.current.reset();
+    if (isOpen) {
+      return;
+    }
+
+    onToggle();
+
+    try {
+      var token = await reRef.current.executeAsync();
+      reRef.current.reset();
+    } catch (err) {
+      console.error(err);
+    }
 
     const res = await fetch("/api/mailer", {
       body: JSON.stringify({
@@ -32,12 +44,16 @@ const OrganismContact = () => {
       },
       method: "POST",
     });
+
     const result = await res.json();
+
+    onToggle();
+
     console.log(result);
   }, []);
 
   return (
-    <Box as="section" id="contact" padding="1rem">
+    <Box as="section" id="contact" padding={["1rem", "2rem"]}>
       <Text
         _after={{
           content: '""',
@@ -53,9 +69,9 @@ const OrganismContact = () => {
         width="100%"
         padding="2"
         margin="4"
-        fontSize="lg"
+        fontSize={["lg", "xl"]}
         fontWeight="bold"
-        as="h1"
+        as="h3"
       >
         Kontakt
       </Text>
@@ -65,7 +81,7 @@ const OrganismContact = () => {
         alignItems="center"
       >
         <Box
-          display={["none", "none", "block"]}
+          display={["none", "none", "none", "block"]}
           flex=".3"
           height="25rem"
           position="relative"
@@ -119,7 +135,7 @@ const OrganismContact = () => {
               />
             </FormControl>
             <FormControl mt={4}>
-              <Input type="submit" />
+              <Input disabled={isOpen} type="submit" />
             </FormControl>
           </form>
         </Box>

@@ -26,7 +26,7 @@ const OrganismOffer = ({ offer }: IProps) => {
   const isDark = colorMode === "dark";
 
   return (
-    <Box padding="1rem" as="section" id="offer">
+    <Box padding={["1rem", "2rem"]} as="section" id="offer">
       <Flex flexWrap="wrap" alignItems="center" justifyContent="center">
         <Text
           _after={{
@@ -42,10 +42,10 @@ const OrganismOffer = ({ offer }: IProps) => {
           position="relative"
           width="100%"
           padding="2"
-          margin="4"
-          fontSize="lg"
+          margin={[4, 6]}
+          fontSize={["lg", "xl"]}
           fontWeight="bold"
-          as="h1"
+          as="h3"
         >
           Oferta
         </Text>

@@ -5,7 +5,12 @@ const OrganismPricing = () => {
   const isDark = colorMode === "dark";
 
   return (
-    <Box as="section" id="pricing" backgroundColor="yellow.500" padding="1rem">
+    <Box
+      as="section"
+      id="pricing"
+      backgroundColor="yellow.500"
+      padding={["1rem", "2rem"]}
+    >
       <Box>
         <Text
           _after={{
@@ -22,15 +27,17 @@ const OrganismPricing = () => {
           width="100%"
           padding="2"
           margin="4"
-          fontSize="lg"
+          fontSize={["lg", "xl"]}
           fontWeight="bold"
-          as="h1"
+          as="h3"
         >
           Jak dobieramy ceny
         </Text>
       </Box>
       <Flex flexDirection={["column", "column", "row"]}>
         <Box
+          height={["auto", "300px"]}
+          as="article"
           padding="3"
           margin="3"
           boxShadow={
@@ -66,6 +73,7 @@ const OrganismPricing = () => {
           </Stack>
         </Box>
         <Box
+          as="article"
           padding="3"
           margin="3"
           boxShadow={
@@ -101,6 +109,7 @@ const OrganismPricing = () => {
           </Stack>
         </Box>
         <Box
+          as="article"
           padding="3"
           margin="3"
           boxShadow={

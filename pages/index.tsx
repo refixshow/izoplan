@@ -43,11 +43,11 @@ const Home = ({ contentfulData }: IProps) => {
     >
       <OrganismModalFB />
       <MoleculeMainNavBar />
-      <OrganismHero />
       <Box as="main">
+        <OrganismHero />
         <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
-        <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
         <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
+        <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />

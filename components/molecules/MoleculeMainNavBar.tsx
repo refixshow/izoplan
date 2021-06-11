@@ -13,6 +13,7 @@ import {
   DrawerBody,
   DrawerFooter,
   Flex,
+  Text,
   Box,
   Link as ChakraLink,
   useDisclosure,
@@ -46,7 +47,7 @@ const MainNavBar = () => {
                 justifyContent="center"
                 direction="column"
               >
-                <NextLink href="/">
+                <NextLink href="/#">
                   <ChakraLink padding="1">start</ChakraLink>
                 </NextLink>
                 <NextLink href="/#offer">
@@ -77,45 +78,74 @@ const MainNavBar = () => {
         </Drawer>
       </Portal>
       <Flex
-        as="nav"
+        as="header"
         alignItems="center"
-        justifyContent="space-between"
-        padding={[3, "2rem"]}
+        justifyContent="center"
+        padding="1rem"
       >
-        <Box lineHeight="0">
-          <NextLink href="/">
-            <ChakraLink>
-              <NextImage
-                src="/assets/logo.png"
-                alt="logo"
-                height="74px"
-                width="74px"
-              />
-            </ChakraLink>
-          </NextLink>
+        <Box width="70vw">
+          <Flex justifyContent="space-between" alignItems="center">
+            <Text as="h1">
+              <NextLink href="/#">
+                <ChakraLink>
+                  <NextImage
+                    src="/assets/logo.png"
+                    alt="logo"
+                    height="74px"
+                    width="74px"
+                  />
+                </ChakraLink>
+              </NextLink>
+            </Text>
+            <Flex alignItems="center">
+              <Box marginRight="3">
+                <Box as="nav" display={["none", "none", "block"]}>
+                  <NextLink href="/#">
+                    <ChakraLink padding="2">start</ChakraLink>
+                  </NextLink>
+                  <NextLink href="/#offer">
+                    <ChakraLink padding="2">oferta</ChakraLink>
+                  </NextLink>
+
+                  <NextLink href="/#cons">
+                    <ChakraLink padding="2">korzyści</ChakraLink>
+                  </NextLink>
+
+                  <NextLink href="/#description">
+                    <ChakraLink padding="2">nasza praca</ChakraLink>
+                  </NextLink>
+
+                  <NextLink href="/#contact">
+                    <ChakraLink padding="2">kontakt</ChakraLink>
+                  </NextLink>
+
+                  <NextLink href="/gallery">
+                    <ChakraLink padding="2">galeria</ChakraLink>
+                  </NextLink>
+                </Box>
+                <IconButton
+                  display={["block", "block", "none"]}
+                  mt={2}
+                  mr={2}
+                  aria-label="Open Menu"
+                  size="lg"
+                  icon={<HamburgerIcon />}
+                  onClick={onOpen}
+                />
+              </Box>
+              <Box>
+                <IconButton
+                  mt={2}
+                  mr={2}
+                  aria-label="Toggle Color"
+                  size="lg"
+                  icon={isDark ? <SunIcon /> : <MoonIcon />}
+                  onClick={toggleColorMode}
+                />
+              </Box>
+            </Flex>
+          </Flex>
         </Box>
-        <Flex>
-          <Box>
-            <IconButton
-              mt={2}
-              mr={2}
-              aria-label="Open Menu"
-              size="lg"
-              icon={<HamburgerIcon />}
-              onClick={onOpen}
-            />
-          </Box>
-          <Box>
-            <IconButton
-              mt={2}
-              mr={2}
-              aria-label="Toggle Color"
-              size="lg"
-              icon={isDark ? <SunIcon /> : <MoonIcon />}
-              onClick={toggleColorMode}
-            />
-          </Box>
-        </Flex>
       </Flex>
     </>
   );

@@ -18,17 +18,8 @@ interface IProps {
 const MotionStack = motion(Stack);
 
 const OrganismDescription = ({ desc }: IProps) => {
-  const grayColor = useColorModeValue(
-    theme.colors.gray[300],
-    theme.colors.gray[800]
-  );
-
   return (
-    <Box
-      id="description"
-      padding={["1rem", "2rem"]}
-      backgroundColor={grayColor}
-    >
+    <Box id="description" padding={["1rem", "2rem"]}>
       {desc.map((el) => {
         return (
           <InView key={el.tytul} threshold={0.25}>

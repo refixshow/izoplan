@@ -10,71 +10,84 @@ SwiperCore.use([EffectCube]);
 
 const OrganismHero = () => {
   return (
-    <Flex paddingX={["1rem"]} justifyContent="center">
-      <Box width="100%">
-        <Swiper
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          effect="cube"
-          loop
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <Box height="45vh">
-              <NextImage
-                src="/assets/slide-bg-1.png"
-                layout="fill"
-                objectFit="cover"
-              />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box height="45vh">
-              <NextImage
-                src="/assets/slide-bg-2.png"
-                objectFit="cover"
-                layout="fill"
-              />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box height="45vh">
-              <NextImage
-                src="/assets/slide-bg-1.png"
-                objectFit="cover"
-                layout="fill"
-              />
-            </Box>
-          </SwiperSlide>
-        </Swiper>
-
-        <Stack marginTop={["2rem", "1"]} textAlign="center">
-          <Text
-            as="h1"
-            fontSize={["xl", "2xl"]}
-            paddingX={[0, "1rem"]}
-            fontWeight="bold"
-          >
-            Profesjonalne świadczenia usług w zakresie izolacji termicznej
-            budynków
-          </Text>
-          <Text>
-            <NextLink href="/#offer">
-              <Button margin={[2, 3]} leftIcon={<ArrowDownIcon />}>
-                oferta
-              </Button>
-            </NextLink>
-            <NextLink href="/#contact">
-              <Button
-                margin={[2, 3]}
-                leftIcon={<EmailIcon />}
-                variant="outline"
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      as="section"
+      padding={["3rem 1rem 5rem 1rem"]}
+    >
+      <Flex width="70vw" alignItems="center" justifyContent="space-between">
+        <Box width="40%">
+          <Box>
+            <Stack>
+              <Text
+                as="h1"
+                marginBottom="3"
+                fontSize="4xl"
+                lineHeight="1.2"
+                fontWeight="bold"
               >
-                kontakt
-              </Button>
-            </NextLink>
-          </Text>
-        </Stack>
-      </Box>
+                Profesjonalne świadczenia usług w zakresie izolacji termicznej
+                budynków
+              </Text>
+              <Text fontSize="xl">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+                harum, adipisci omnis molestias, consequuntur maxime delectus
+                minima illo cumque laboriosam autem doloremque, laborum enim
+                nesciunt!
+              </Text>
+            </Stack>
+            <Box marginTop="6">
+              <NextLink href="/#offer">
+                <Button marginRight="5" leftIcon={<ArrowDownIcon />}>
+                  oferta
+                </Button>
+              </NextLink>
+              <NextLink href="/#contact">
+                <Button leftIcon={<EmailIcon />} variant="outline">
+                  kontakt
+                </Button>
+              </NextLink>
+            </Box>
+          </Box>
+        </Box>
+        <Box width="40%">
+          <Swiper
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            effect="cube"
+            loop
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Box height={["45vh", "45vh", "45vh", "55vh"]}>
+                <NextImage
+                  src="/assets/slide-bg-1.png"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box height={["45vh", "45vh", "45vh", "55vh"]}>
+                <NextImage
+                  src="/assets/slide-bg-2.png"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box height={["45vh", "45vh", "45vh", "55vh"]}>
+                <NextImage
+                  src="/assets/slide-bg-1.png"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </Box>
+            </SwiperSlide>
+          </Swiper>
+        </Box>
+      </Flex>
     </Flex>
   );
 };

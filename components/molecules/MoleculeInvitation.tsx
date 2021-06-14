@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
@@ -12,6 +14,8 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  useColorModeValue,
+  theme,
 } from "@chakra-ui/react";
 
 interface IProps {
@@ -20,9 +24,14 @@ interface IProps {
   popup?: boolean;
 }
 
-const MoleculeInvitation = ({ text, yellow, popup }: IProps) => {
+const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { ref, inView } = useInView({ triggerOnce: true });
+
+  const grayColor = useColorModeValue(
+    theme.colors.gray[300],
+    theme.colors.gray[800]
+  );
 
   useEffect(() => {
     if (inView) {
@@ -36,13 +45,18 @@ const MoleculeInvitation = ({ text, yellow, popup }: IProps) => {
       textAlign="center"
       justifyContent="center"
       alignItems="center"
-      backgroundColor={yellow ? "yellow.500" : null}
+      backgroundColor={yellow ? "yellow.500" : grayColor}
       gridColumn="full-start / full-end"
-      padding="10"
+      padding="64px 0"
     >
       {popup ? (
         <>
-          <Modal isCentered isOpen={isOpen} onClose={onClose}>
+          <Modal
+            isCentered
+            isOpen={isOpen}
+            returnFocusOnClose={false}
+            onClose={onClose}
+          >
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>Ciepło polecamy!</ModalHeader>
@@ -67,12 +81,12 @@ const MoleculeInvitation = ({ text, yellow, popup }: IProps) => {
               </ModalFooter>
             </ModalContent>
           </Modal>
-          <Text ref={ref} as="h2" fontSize={["xl"]} fontWeight="bold">
+          <Text ref={ref} as="h2" fontSize="2xl" fontWeight="bold">
             {text}
           </Text>
         </>
       ) : (
-        <Text as="h2" fontSize={["xl"]} fontWeight="bold">
+        <Text as="h2" fontSize="2xl" fontWeight="bold">
           {text}
         </Text>
       )}

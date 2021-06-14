@@ -28,7 +28,12 @@ const OrganismModalFB = () => {
         Facebook
       </Button>
 
-      <Modal isCentered isOpen={modal.isOpen} onClose={modal.onClose}>
+      <Modal
+        returnFocusOnClose={false}
+        isCentered
+        isOpen={modal.isOpen}
+        onClose={modal.onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Ciepło polecamy!</ModalHeader>

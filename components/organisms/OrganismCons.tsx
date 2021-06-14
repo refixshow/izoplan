@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import NextImage from "next/image";
 import NextLink from "next/link";
 import {
@@ -10,6 +12,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { AtomSectionHeader } from "../";
 
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -22,90 +25,77 @@ interface IProps {
   cons: any[];
 }
 
-const OrganismCons = ({ cons }: IProps) => {
+const OrganismCons: FC<IProps> = ({ cons }) => {
   const grayColor = useColorModeValue(
     theme.colors.gray[300],
     theme.colors.gray[800]
   );
   return (
-    <Box id="cons" backgroundColor={grayColor}>
+    <Box
+      as="section"
+      id="cons"
+      backgroundColor={grayColor}
+      paddingBottom="150px"
+    >
       <Flex justifyContent="center" alignItems="center" overflow="hidden">
         <Box maxWidth="1128px">
-          <Text
-            _after={{
-              content: '""',
-              position: "absolute",
-              width: "80%",
-              height: "3px",
-              backgroundColor: "red.600",
-              bottom: "-3px",
-              left: "0",
-              borderRadius: "3px",
-            }}
-            position="relative"
-            width="100%"
-            padding="2"
-            margin={[4, 6]}
-            fontSize={["lg", "xl"]}
-            fontWeight="bold"
-            as="h3"
-          >
-            Korzyści
-          </Text>
-          <Swiper
-            effect="coverflow"
-            centeredSlides
-            grabCursor
-            loop
-            spaceBetween={50}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            breakpoints={{
-              "640": {
-                slidesPerView: 1,
-              },
-              "768": {
-                slidesPerView: 2,
-              },
-            }}
-          >
-            {cons.map((el) => {
-              return (
-                <SwiperSlide key={el.tytul}>
-                  <Flex
-                    direction="column"
-                    padding="4"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Box position="relative" width="150px" height="150px">
-                      <NextImage
-                        src={`http:${el.ikona.fields.file.url}`}
-                        alt={el.ikona.fields.title}
-                        layout="fill"
-                      />
-                    </Box>
-                    <Stack>
-                      <Text as="h2" fontWeight="bold">
-                        {el.tytul}
-                      </Text>
-                      <Text as="p">{el.opis.content[0].content[0].value}</Text>
-                    </Stack>
-                  </Flex>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-          <Flex
-            justifyContent="center"
-            marginTop={[0, 0, 0, "1rem"]}
-            textAlign="center"
-          >
-            <Box flex={[1, 1, 1, 0.7]}>
+          <Box as="header" paddingBottom="60px">
+            <AtomSectionHeader>korzyści naszej pracy</AtomSectionHeader>
+          </Box>
+          <Box>
+            <Swiper
+              effect="coverflow"
+              centeredSlides
+              grabCursor
+              loop
+              spaceBetween={50}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              breakpoints={{
+                "640": {
+                  slidesPerView: 1,
+                },
+                "768": {
+                  slidesPerView: 2,
+                },
+              }}
+            >
+              {cons.map((el) => {
+                return (
+                  <SwiperSlide key={el.tytul}>
+                    <Flex
+                      direction="column"
+                      padding="6"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Box position="relative" width="150px" height="150px">
+                        <NextImage
+                          src={`http:${el.ikona.fields.file.url}`}
+                          alt={el.ikona.fields.title}
+                          layout="fill"
+                        />
+                      </Box>
+                      <Stack maxWidth="80vw">
+                        <Text as="h4" fontSize="md" fontWeight="bold">
+                          {el.tytul}
+                        </Text>
+                        <Text as="p">
+                          {el.opis.content[0].content[0].value}
+                        </Text>
+                      </Stack>
+                    </Flex>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </Box>
+          <Flex justifyContent="center" textAlign="center">
+            <Box width="70%" padding="6">
               <Text
-                marginTop="2"
+                marginTop="5"
                 marginBottom="2"
                 as="h3"
-                fontSize={["md", "lg"]}
+                fontSize="xl"
                 fontWeight="bold"
               >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi

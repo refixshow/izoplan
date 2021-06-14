@@ -1,57 +1,77 @@
-import {
-  Box,
-  Flex,
-  Stack,
-  Text,
-  useColorModeValue,
-  theme,
-} from "@chakra-ui/react";
+import { FC } from "react";
+
+import NextImage from "next/image";
+
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
 
 import { InView } from "react-intersection-observer";
 
 interface IProps {
-  desc: any[];
+  desc: { [key: string]: any }[];
 }
 
-const MotionStack = motion(Stack);
+const MotionFlex = motion(Flex);
 
-const OrganismDescription = ({ desc }: IProps) => {
+const OrganismDescription: FC<IProps> = ({ desc }) => {
   return (
-    <Box id="description" padding={["1rem", "2rem"]}>
-      {desc.map((el) => {
-        return (
-          <InView key={el.tytul} threshold={0.25}>
-            {({ ref, inView }) => (
-              <Flex
-                ref={ref}
-                padding={[2, "1rem"]}
-                _even={{
-                  flexDirection: ["row", "row", "row", "column-reverse"],
-                  textAlign: ["left", "left", "left", "right"],
-                }}
-                marginTop="4"
-                marginBottom="4"
-                overflow="hidden"
-              >
-                <Box display={["none", "none", "none", "block"]}>img</Box>
-                <MotionStack
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={
-                    inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }
-                  }
-                >
-                  <Text as="h3" fontWeight="bold">
-                    {el.tytul}
-                  </Text>
-                  <Text>{el.opis.content[0].content[0].value}</Text>
-                </MotionStack>
-              </Flex>
-            )}
-          </InView>
-        );
-      })}
+    <Box as="section" id="description">
+      <Flex
+        justifyContent="center"
+        padding="150px"
+        alignItems="center"
+        overflow="hidden"
+      >
+        <Box maxWidth="1128px">
+          {desc.map((el) => {
+            return (
+              <InView key={el.tytul} threshold={0.7}>
+                {({ ref, inView }) => (
+                  <MotionFlex
+                    ref={ref}
+                    paddingBottom="100px"
+                    _last={{
+                      paddingBottom: "0",
+                    }}
+                    _even={{
+                      flexDirection: "row-reverse",
+                      textAlign: "right",
+                    }}
+                    justifyContent="center"
+                    alignItems="center"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={
+                      inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                    }
+                  >
+                    <Box
+                      position="relative"
+                      backgroundColor="red"
+                      flex="0 0 50%"
+                      maxWidth="50%"
+                      height="350px"
+                      padding="24px"
+                    >
+                      <NextImage
+                        src={`http:${el.zdjeciePracy.fields.file.url}`}
+                        layout="fill"
+                        alt={el.zdjeciePracy.fields.title}
+                      />
+                    </Box>
+                    <Stack padding="24px" flex="0 0 50%" maxWidth="50%">
+                      <Text as="h3" fontSize="xl" fontWeight="bold">
+                        {el.tytul}
+                      </Text>
+                      <Text>{el.opis.content[0].content[0].value}</Text>
+                    </Stack>
+                  </MotionFlex>
+                )}
+              </InView>
+            );
+          })}
+        </Box>
+      </Flex>
     </Box>
   );
 };

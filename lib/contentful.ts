@@ -38,10 +38,11 @@ const client = createClient({
   accessToken: process.env.NEXT_PUBLIC_CONTENTFULL_ACCESSTOKEN,
 });
 
-export const fetchAllEntries: () => Promise<EntryCollection<unknown>> =
-  async () => {
-    return await client.getEntries();
-  };
+export const fetchAllEntries: () => Promise<
+  EntryCollection<unknown>
+> = async () => {
+  return await client.getEntries();
+};
 
 export const fetchSingleEntry: (
   entryName: string

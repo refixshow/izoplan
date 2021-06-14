@@ -48,8 +48,6 @@ const OrganismContact = () => {
     const result = await res.json();
 
     onToggle();
-
-    console.log(result);
   }, []);
 
   return (

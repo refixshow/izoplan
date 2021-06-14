@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import NextLink from "next/link";
 import NextImage from "next/image";
 import {
@@ -10,6 +12,8 @@ import {
   useColorMode,
   Link as ChakraLink,
 } from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import { AtomSectionHeader } from "../";
 import slugify from "slugify";
 
 import { InView } from "react-intersection-observer";
@@ -21,7 +25,7 @@ interface IProps {
   offer: any[];
 }
 
-const OrganismOffer = ({ offer }: IProps) => {
+const OrganismOffer: FC<IProps> = ({ offer }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
 
@@ -34,7 +38,7 @@ const OrganismOffer = ({ offer }: IProps) => {
 
   return (
     <Flex
-      paddingBottom="168px"
+      paddingBottom="250px"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
@@ -51,12 +55,15 @@ const OrganismOffer = ({ offer }: IProps) => {
         backgroundColor: grayColor,
       }}
     >
-      <Flex flexWrap="wrap" justifCcontent="center">
+      <Flex flexWrap="wrap" justifyContent="center">
         <Box maxWidth="1128px">
+          <Box as="header" padding="60px 0">
+            <AtomSectionHeader>nasza oferta</AtomSectionHeader>
+          </Box>
           <Flex flexWrap="wrap" justifyContent="center">
             {offer.map((el) => {
               return (
-                <InView key={el.tytul} threshold={0.25}>
+                <InView key={el.tytul} threshold={0.33}>
                   {({ ref, inView }) => (
                     <MotionBox
                       backgroundColor={DarkColor}
@@ -65,15 +72,15 @@ const OrganismOffer = ({ offer }: IProps) => {
                         top: "80px",
                       }}
                       ref={ref}
-                      initial={{ opacity: 0, x: -50 }}
+                      initial={{ opacity: 0, y: 50 }}
                       animate={
-                        inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+                        inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
                       }
                       textAlign="center"
-                      maxWidth="388px"
+                      maxWidth="340px"
                       flex-grow="1"
-                      padding="5"
-                      margin="3"
+                      padding="8"
+                      margin="6"
                       boxShadow={
                         isDark
                           ? "0px 0px 10px rgb(0 0 0 / 30%)"
@@ -91,19 +98,27 @@ const OrganismOffer = ({ offer }: IProps) => {
                           : "0px 0px 10px rgb(0 0 0 / 30%)",
                       }}
                     >
-                      <NextImage
-                        src={`http:${el.ikona.fields.file.url}`}
-                        alt={slugify(el.tytul, { lower: true })}
-                        width="200px"
-                        height="150px"
-                      />
+                      <Flex justifyContent="center" position="relative">
+                        <Box
+                          position="relative"
+                          width="98px"
+                          height="98px"
+                          margin="5"
+                        >
+                          <NextImage
+                            src={`http:${el.ikona.fields.file.url}`}
+                            alt={slugify(el.tytul, { lower: true })}
+                            layout="fill"
+                          />
+                        </Box>
+                      </Flex>
 
                       <Box marginTop="3">
                         <Stack>
                           <Text
                             as="h3"
                             padding="1"
-                            fontSize="md"
+                            fontSize="xl"
                             fontWeight="bold"
                           >
                             {el.tytul}
@@ -111,13 +126,16 @@ const OrganismOffer = ({ offer }: IProps) => {
                           <Text as="p">{el.opisOgolny}</Text>
                         </Stack>
                       </Box>
-                      <Box marginTop="3">
+                      <Box marginTop="3" marginBottom="24px">
                         <NextLink
                           href={`/offer/${slugify(el.tytul, {
                             lower: true,
                           })}`}
                         >
-                          <ChakraLink>dowiedz się więcej</ChakraLink>
+                          <ChakraLink>
+                            <ChevronRightIcon />
+                            dowiedz się więcej
+                          </ChakraLink>
                         </NextLink>
                       </Box>
                     </MotionBox>

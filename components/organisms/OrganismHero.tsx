@@ -3,12 +3,24 @@ import SwiperCore, { EffectCube } from "swiper/core";
 import NextImage from "next/image";
 import NextLink from "next/link";
 
-import { Box, Flex, Text, Stack, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Stack,
+  Button,
+  useColorModeValue,
+  theme,
+} from "@chakra-ui/react";
 import { ArrowDownIcon, EmailIcon } from "@chakra-ui/icons";
 
 SwiperCore.use([EffectCube]);
 
 const OrganismHero = () => {
+  const grayColor = useColorModeValue(
+    theme.colors.gray[300],
+    theme.colors.gray[800]
+  );
   return (
     <Flex
       justifyContent="center"
@@ -39,12 +51,21 @@ const OrganismHero = () => {
             </Stack>
             <Box marginTop="6">
               <NextLink href="/#offer">
-                <Button marginRight="5" leftIcon={<ArrowDownIcon />}>
+                <Button
+                  marginRight="5"
+                  backgroundColor={grayColor}
+                  leftIcon={<ArrowDownIcon />}
+                >
                   oferta
                 </Button>
               </NextLink>
               <NextLink href="/#contact">
-                <Button leftIcon={<EmailIcon />} variant="outline">
+                <Button
+                  leftIcon={<EmailIcon />}
+                  borderColor={grayColor}
+                  borderWidth="2px"
+                  variant="outline"
+                >
                   kontakt
                 </Button>
               </NextLink>

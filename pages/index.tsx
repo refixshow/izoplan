@@ -14,6 +14,7 @@ import {
   OrganismContact,
   OrganismFooter,
   OrganismModalFB,
+  OrganismFAQ,
 } from "../components";
 
 import { motion } from "framer-motion";
@@ -38,7 +39,6 @@ const Home = ({ contentfulData }: IProps) => {
     <MotionBox
       exit={{ opacity: 0 }}
       overflow="hidden"
-      fontSize="sm"
       backgroundColor={DarkColor}
     >
       <OrganismModalFB />
@@ -50,6 +50,7 @@ const Home = ({ contentfulData }: IProps) => {
         <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
+        <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />
         <OrganismPricing />
         <OrganismContact />
       </Box>

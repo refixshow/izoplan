@@ -22,6 +22,27 @@ const Offer = ({ pageData }) => {
       exit={{ opacity: 0 }}
     >
       <Head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          href="/favicon-16x16.png"
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          href="/favicon-32x32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+        <meta name="theme-color" content="#317EFB" />
+
         <meta name="robots" content="index, follow" />
         <meta name="language" content="Polish" />
         <title>Izoplan - {pageData.fields.tytul}</title>
@@ -34,7 +55,6 @@ const Offer = ({ pageData }) => {
           content={`Izoplan - ${pageData.fields.tytul}`}
           key="title"
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
           rel="icon"
           href={`http:${pageData.fields.ikona.fields.file.url}`}

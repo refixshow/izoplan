@@ -37,7 +37,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
       backgroundColor={grayColor}
       paddingBottom="150px"
     >
-      <Flex justifyContent="center" alignItems="center" overflow="hidden">
+      <Flex justifyContent="center" alignItems="center">
         <Box maxWidth="1128px">
           <Box as="header" paddingBottom="60px">
             <AtomSectionHeader>korzyści naszej pracy</AtomSectionHeader>

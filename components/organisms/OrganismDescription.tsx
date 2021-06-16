@@ -16,28 +16,42 @@ const MotionFlex = motion(Flex);
 
 const OrganismDescription: FC<IProps> = ({ desc }) => {
   return (
-    <Box as="section" id="description">
+    <Box as="section" id="description" paddingX="3rem">
       <Flex
         justifyContent="center"
-        padding="150px"
+        paddingTop="80px"
+        paddingBottom="180px"
         alignItems="center"
         overflow="hidden"
       >
         <Box maxWidth="1128px">
           {desc.map((el) => {
             return (
-              <InView key={el.tytul} threshold={0.7}>
+              <InView key={el.tytul} threshold={0.6}>
                 {({ ref, inView }) => (
                   <MotionFlex
                     ref={ref}
-                    paddingBottom="100px"
+                    flexDirection={["column", "column", "column", "row"]}
+                    paddingBottom={["50px", "50px", "50px", "150px"]}
                     _last={{
                       paddingBottom: "0",
                     }}
-                    _even={{
-                      flexDirection: "row-reverse",
-                      textAlign: "right",
-                    }}
+                    _even={[
+                      {
+                        flexDirection: "column",
+                      },
+                      {
+                        flexDirection: "column",
+                      },
+                      ,
+                      {
+                        flexDirection: "column",
+                      },
+                      {
+                        flexDirection: "row-reverse",
+                        textAlign: "right",
+                      },
+                    ]}
                     justifyContent="center"
                     alignItems="center"
                     initial={{ opacity: 0, y: 50 }}
@@ -48,9 +62,10 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                     <Box
                       position="relative"
                       backgroundColor="red"
-                      flex="0 0 50%"
-                      maxWidth="50%"
-                      height="350px"
+                      flex={["0 0 70%", "0 0 70%", "0 0 70%", "0 0 50%"]}
+                      maxWidth={["70%", "70%", "70%", "50%"]}
+                      width={["70%", "70%", "70%", "auto"]}
+                      height="400px"
                       padding="24px"
                     >
                       <NextImage

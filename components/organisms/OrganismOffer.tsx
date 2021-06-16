@@ -37,11 +37,9 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
   );
 
   return (
-    <Flex
-      paddingBottom="250px"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
+    <Box
+      paddingTop="60px"
+      paddingBottom="140px"
       as="section"
       id="offer"
       position="relative"
@@ -55,9 +53,9 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
         backgroundColor: grayColor,
       }}
     >
-      <Flex flexWrap="wrap" justifyContent="center">
+      <Flex justifyContent="center">
         <Box maxWidth="1128px">
-          <Box as="header" padding="60px 0">
+          <Box as="header" paddingBottom="60px">
             <AtomSectionHeader>nasza oferta</AtomSectionHeader>
           </Box>
           <Flex flexWrap="wrap" justifyContent="center">
@@ -68,9 +66,23 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
                     <MotionBox
                       backgroundColor={DarkColor}
                       position="relative"
-                      _even={{
-                        top: "80px",
-                      }}
+                      _even={[
+                        {
+                          top: "0",
+                        },
+                        {
+                          top: "0",
+                        },
+                        {
+                          top: "0",
+                        },
+                        {
+                          top: "80px",
+                        },
+                        {
+                          top: "80px",
+                        },
+                      ]}
                       ref={ref}
                       initial={{ opacity: 0, y: 50 }}
                       animate={
@@ -146,7 +158,7 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
           </Flex>
         </Box>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 

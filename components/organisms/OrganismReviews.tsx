@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
-import NextLink from "next/link";
+
 import {
   Box,
   Flex,

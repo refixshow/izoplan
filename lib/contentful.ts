@@ -57,7 +57,7 @@ export const fetchAndParseFacebookReviews = async () => {
         params: {
           fields: "access_token",
           access_token:
-            "EAAEpDMYI6WsBAOZALmshTkYfLjDOu2k4cYIaSoZCe0A8MG8mC6E5eYK13YuGsprsZBx8yMeH3B6dgh8FAdGd0LoUc0ayP3ZAwWMZC1ZAqhWjG4NnKlNdo7ijgAZCC7EruzubeXfhxf98oeLP6sHe02RUxRwHJOHSmM2glfOM4FXPV3Dml8VfkM4ZA1bNfLt1L80ZBSgTZAdID2CQuAu1xz94nqeZBQ2V3ZCNjXwZD",
+            "EAAEpDMYI6WsBALDHNjIbFaeao5vXtVOtS1ya0AcUdgSoW97kZBrc3Qmj48L2WB808TZCwuBLZBoc9sSW0jcDbUigtoQb21jx1NfNGDsFDMy4daICB2njGKyzWfgBYzRXuVb7kqwHZANZAU3qZCwxl3YQGnnN4zsurjieYnKBZBdZAjmYZBaGnccNNXA69wDlwfQpsT0y4ameK7hdZB4If56TEkdsakLQx3MBcZD",
         },
       }
     );

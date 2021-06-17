@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import NextImage from "next/image";
 
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { background, Box, Flex, Stack, Text } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
 
@@ -16,23 +16,25 @@ const MotionFlex = motion(Flex);
 
 const OrganismDescription: FC<IProps> = ({ desc }) => {
   return (
-    <Box as="section" id="description" paddingX="3rem">
+    <Box as="section" id="description" paddingX={["0", "0", "3rem", "3rem"]}>
       <Flex
         justifyContent="center"
-        paddingTop="80px"
-        paddingBottom="180px"
+        paddingTop={["0", "0", "80px", "80px"]}
+        paddingBottom={["0", "0", "180px", "180px"]}
         alignItems="center"
         overflow="hidden"
       >
-        <Box maxWidth="1128px">
+        <Box maxWidth={["100%", "100%", "1128px", "1128px"]}>
           {desc.map((el) => {
             return (
-              <InView key={el.tytul} threshold={0.6}>
+              <InView key={el.tytul} threshold={0.4}>
                 {({ ref, inView }) => (
                   <MotionFlex
+                    position="relative"
+                    width="100%"
                     ref={ref}
                     flexDirection={["column", "column", "column", "row"]}
-                    paddingBottom={["50px", "50px", "50px", "150px"]}
+                    paddingBottom={["0px", "0px", "50px", "150px"]}
                     _last={{
                       paddingBottom: "0",
                     }}
@@ -61,12 +63,20 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                   >
                     <Box
                       position="relative"
-                      backgroundColor="red"
                       flex={["0 0 70%", "0 0 70%", "0 0 70%", "0 0 50%"]}
-                      maxWidth={["70%", "70%", "70%", "50%"]}
-                      width={["70%", "70%", "70%", "auto"]}
-                      height="400px"
-                      padding="24px"
+                      height="auto"
+                      minHeight="400px"
+                      minWidth={["100vw", "100vw", "100vw", "auto", "auto"]}
+                      _after={{
+                        content: "''",
+                        display: ["block", "block", "block", "none", "none"],
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        top: "0",
+                        left: "0",
+                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      }}
                     >
                       <NextImage
                         src={`http:${el.zdjeciePracy.fields.file.url}`}
@@ -74,7 +84,18 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                         alt={el.zdjeciePracy.fields.title}
                       />
                     </Box>
-                    <Stack padding="24px" flex="0 0 50%" maxWidth="50%">
+                    <Stack
+                      maxWidth={["90%", "90%", "90%", "auto", "auto"]}
+                      position={[
+                        "absolute",
+                        "absolute",
+                        "absolute",
+                        "relative",
+                        "relative",
+                      ]}
+                      padding="24px"
+                      flex={["0 0 70%", "0 0 70%", "0 0 70%", "0 0 50%"]}
+                    >
                       <Text as="h3" fontSize="xl" fontWeight="bold">
                         {el.tytul}
                       </Text>

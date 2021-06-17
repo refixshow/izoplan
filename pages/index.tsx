@@ -1,7 +1,13 @@
-import { entries, fetchAllEntries, TFetchAllEntries } from "../lib";
+import {
+  entries,
+  fetchAllEntries,
+  fetchAndParseFacebookReviews,
+  parseContentfulData,
+  TFetchAllEntries,
+} from "../lib";
 import { Box, useColorModeValue, theme } from "@chakra-ui/react";
 
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import Head from "next/head";
 
 import {
@@ -23,13 +29,14 @@ import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-import { parseContentfulData } from "../lib";
-
 interface IProps {
-  contentfulData: TFetchAllEntries;
+  pageData: {
+    contentfulData: TFetchAllEntries;
+    fbData: [{ [key: string]: any }];
+  };
 }
 
-const Home = ({ contentfulData }: IProps) => {
+const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
 
   const parsedcontentfulData = useMemo(
@@ -72,16 +79,17 @@ const Home = ({ contentfulData }: IProps) => {
       </Head>
       <OrganismModalFB />
       <MoleculeMainNavBar />
+
       <Box as="main">
         <OrganismHero />
-        <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
-        <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
+        {/* <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
+        <OrganismCons cons={parsedcontentfulData[entries.korzysci]} /> */}
         <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismReviews reviews={[{}]} />
-        <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
+        <OrganismReviews reviews={fbData} />
+        {/* <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} /> */}
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
-        <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />
+        {/* <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} /> */}
         <OrganismContact />
       </Box>
       <OrganismFooter />
@@ -90,16 +98,21 @@ const Home = ({ contentfulData }: IProps) => {
 };
 
 export async function getStaticProps() {
-  const contentfulEntries = await fetchAllEntries();
+  let pageData;
+  let res;
+  try {
+    res = await Promise.all([
+      fetchAllEntries(),
+      fetchAndParseFacebookReviews(),
+    ]);
 
-  if (contentfulEntries.errors) {
-    return {
-      notFound: true,
-    };
+    pageData = { contentfulData: res[0], fbData: res[1] };
+  } catch (err) {
+    console.error(err);
   }
 
   return {
-    props: { contentfulData: contentfulEntries },
+    props: { pageData },
   };
 }
 

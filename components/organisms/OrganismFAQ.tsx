@@ -21,7 +21,7 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
     <Box as="section" padding="100px 0" id="faq">
       <Flex justifyContent="center" alignItems="center">
         <Box width="1128px">
-          <Box as="header" paddingBottom="60px">
+          <Box as="header" paddingBottom="100px" paddingX="1rem">
             <AtomSectionHeader>najczęściej zadawane pytania</AtomSectionHeader>
           </Box>
           <Box>
@@ -52,7 +52,6 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
           </Box>
         </Box>
       </Flex>
-      {console.log(FAQ)}
     </Box>
   );
 };

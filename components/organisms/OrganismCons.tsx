@@ -38,7 +38,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
       paddingBottom="150px"
     >
       <Flex justifyContent="center" alignItems="center">
-        <Box maxWidth="1128px">
+        <Box maxWidth={["100%", "100%", "1128px", "1128px"]}>
           <Box as="header" paddingBottom="60px">
             <AtomSectionHeader>korzyści naszej pracy</AtomSectionHeader>
           </Box>
@@ -75,7 +75,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                           layout="fill"
                         />
                       </Box>
-                      <Stack maxWidth="80vw">
+                      <Stack>
                         <Text as="h4" fontSize="md" fontWeight="bold">
                           {el.tytul}
                         </Text>
@@ -90,7 +90,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
             </Swiper>
           </Box>
           <Flex justifyContent="center" textAlign="center">
-            <Box width="70%" padding="6">
+            <Box maxWidth={["100%", "100%", "70%", "70%"]} padding="6">
               <Text
                 marginTop="5"
                 marginBottom="2"

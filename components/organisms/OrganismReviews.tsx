@@ -1,110 +1,83 @@
 import { FC } from "react";
-
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import { PlusSquareIcon } from "@chakra-ui/icons";
+import NextLink from "next/link";
+import {
+  Box,
+  Flex,
+  Text,
+  useColorModeValue,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 
 interface IProps {
   reviews: { [key: string]: any }[];
 }
 
 const OrganismReviews: FC<IProps> = ({ reviews }) => {
+  const white = useColorModeValue("gray.800", "whiteAlpha.900");
+  const gray = useColorModeValue("whiteAlpha.900", "gray.800");
+  const yellow = useColorModeValue("yellow.500", "yellow.400");
+
+  console.log(reviews);
+
   return (
-    <Box as="section" padding="100px 0" id="reviews">
+    <Box as="section" paddingTop="100px" paddingBottom="150px" id="reviews">
       <Flex justifyContent="center">
         <Box maxWidth="1128px" position="relative">
           <Flex flexWrap="wrap" justifyContent="center">
-            <Box
-              as="article"
-              position="relative"
-              top={["0", "0", "0", "40px", "40px"]}
-              width="400px"
-              padding="52px 24px 24px"
-            >
-              <Box padding="52px 24px 24px" backgroundColor="red">
-                <Box position="relative">
-                  <Box
-                    position="absolute"
-                    backgroundColor="blue"
-                    width="45px"
-                    height="45px"
-                    top="-80px"
-                  >
-                    img1
+            {reviews.map((el) => (
+              <Box
+                key={el.review_text}
+                as="article"
+                position="relative"
+                _odd={{
+                  top: ["0", "0", "0", "40px", "40px"],
+                }}
+                width="400px"
+                padding="52px 24px 24px"
+              >
+                <Box
+                  minHeight="170px"
+                  padding="52px 24px 24px"
+                  boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"
+                  backgroundColor={white}
+                >
+                  <Box position="relative">
+                    <Box
+                      position="absolute"
+                      width="45px"
+                      height="45px"
+                      top="-80px"
+                    >
+                      <PlusSquareIcon
+                        width="100%"
+                        color={yellow}
+                        height="100%"
+                      />
+                    </Box>
+                    <Box>
+                      <Text
+                        lineHeight="24px"
+                        letterSpacing="-0.1px"
+                        fontStyle="italic"
+                        color={gray}
+                      >
+                        {el.review_text}
+                      </Text>
+                    </Box>
                   </Box>
-                  <Box>
-                    <Text>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Recusandae ullam architecto, deserunt libero asperiores
-                      minus.
-                    </Text>
-                  </Box>
-                </Box>
-                <Box>imie i nazwisko</Box>
-              </Box>
-            </Box>
-            <Box
-              as="article"
-              position="relative"
-              width="400px"
-              padding="52px 24px 24px"
-            >
-              <Box padding="52px 24px 24px" backgroundColor="red">
-                <Box position="relative">
-                  <Box
-                    position="absolute"
-                    backgroundColor="blue"
-                    width="45px"
-                    height="45px"
-                    top="-80px"
-                  >
-                    img2
-                  </Box>
-                  <Box>
-                    <Text>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Recusandae ullam architecto, deserunt libero asperiores
-                      minus.
-                    </Text>
+                  <Box color={gray}>
+                    <ChakraLink
+                      href={`https://facebook.com/${el.open_graph_story.id}`}
+                      target="_blank"
+                    >
+                      Zobacz opinie
+                    </ChakraLink>
                   </Box>
                 </Box>
-                <Box>imie i nazwisko</Box>
               </Box>
-            </Box>
-            <Box
-              as="article"
-              position="relative"
-              top={["0", "0", "0", "40px", "40px"]}
-              width="400px"
-              padding="52px 24px 24px"
-            >
-              <Box padding="52px 24px 24px" backgroundColor="red">
-                <Box position="relative">
-                  <Box
-                    position="absolute"
-                    backgroundColor="blue"
-                    width="45px"
-                    height="45px"
-                    top="-80px"
-                  >
-                    img3
-                  </Box>
-                  <Box>
-                    <Text>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Recusandae ullam architecto, deserunt libero asperiores
-                      minus.
-                    </Text>
-                  </Box>
-                </Box>
-                <Box>imie i nazwisko</Box>
-              </Box>
-            </Box>
+            ))}
           </Flex>
-          <Box
-            textAlign="center"
-            paddingTop={["50px", "50px", "50px", "150px", "150px"]}
-          >
-            <Button>zobacz więcej</Button>
-          </Box>
         </Box>
       </Flex>
     </Box>

@@ -61,8 +61,6 @@ export const fetchAndParseFacebookReviews = async () => {
       }
     );
 
-    console.log(resWithToken);
-
     res = await axios.get("https://graph.facebook.com/v10.0/102063341422126", {
       params: {
         fields:
@@ -71,7 +69,7 @@ export const fetchAndParseFacebookReviews = async () => {
       },
     });
   } catch (err) {
-    console.error("avx");
+    console.error(err);
   }
 
   return res.data.ratings.data;

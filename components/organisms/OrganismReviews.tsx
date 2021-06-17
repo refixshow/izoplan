@@ -18,8 +18,6 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
   const gray = useColorModeValue("whiteAlpha.900", "gray.800");
   const yellow = useColorModeValue("yellow.500", "yellow.400");
 
-  console.log(reviews);
-
   return (
     <Box as="section" paddingTop="100px" paddingBottom="150px" id="reviews">
       <Flex justifyContent="center">

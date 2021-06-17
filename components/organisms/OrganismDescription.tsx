@@ -38,22 +38,10 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                     _last={{
                       paddingBottom: "0",
                     }}
-                    _even={[
-                      {
-                        flexDirection: "column",
-                      },
-                      {
-                        flexDirection: "column",
-                      },
-                      ,
-                      {
-                        flexDirection: "column",
-                      },
-                      {
-                        flexDirection: "row-reverse",
-                        textAlign: "right",
-                      },
-                    ]}
+                    _even={{
+                      flexDirection: "row-reverse",
+                      textAlign: ["left", "left", "left", "right", "right"],
+                    }}
                     justifyContent="center"
                     alignItems="center"
                     initial={{ opacity: 0, y: 50 }}
@@ -63,7 +51,7 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                   >
                     <Box
                       position="relative"
-                      flex={["0 0 70%", "0 0 70%", "0 0 70%", "0 0 50%"]}
+                      flex={["0 0 50%", "0 0 50%", "0 0 50%", "0 0 50%"]}
                       height="auto"
                       minHeight="400px"
                       minWidth={["100vw", "100vw", "100vw", "auto", "auto"]}

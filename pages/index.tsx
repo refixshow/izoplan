@@ -82,14 +82,14 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
 
       <Box as="main">
         <OrganismHero />
-        {/* <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
-        <OrganismCons cons={parsedcontentfulData[entries.korzysci]} /> */}
+        <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
+        <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
         <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
         <OrganismReviews reviews={fbData} />
-        {/* <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} /> */}
+        <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismPricing />
-        {/* <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} /> */}
+        <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />
         <OrganismContact />
       </Box>
       <OrganismFooter />

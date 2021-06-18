@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import NextImage from "next/image";
 
-import { background, Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
 
@@ -73,6 +73,13 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                       />
                     </Box>
                     <Stack
+                      color={[
+                        "whiteAlpha.900",
+                        "whiteAlpha.900",
+                        "whiteAlpha.900",
+                        "inherit",
+                        "inherit",
+                      ]}
                       maxWidth={["90%", "90%", "90%", "auto", "auto"]}
                       position={[
                         "absolute",

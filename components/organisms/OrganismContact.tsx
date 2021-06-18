@@ -9,7 +9,9 @@ import {
   Input,
   Text,
   Textarea,
+  Spinner,
 } from "@chakra-ui/react";
+import { AtomSectionHeader } from "../";
 import axios from "axios";
 
 const OrganismContact = () => {
@@ -76,94 +78,108 @@ const OrganismContact = () => {
   }, []);
 
   return (
-    <Box as="section" id="contact">
-      <Text
-        _after={{
-          content: '""',
-          position: "absolute",
-          width: "80%",
-          height: "3px",
-          backgroundColor: "red.600",
-          bottom: "-3px",
-          left: "0",
-          borderRadius: "3px",
-        }}
-        position="relative"
-        width="100%"
-        padding="2"
-        margin="4"
-        fontSize={["lg", "xl"]}
-        fontWeight="bold"
-        as="h3"
-      >
-        Kontakt
-      </Text>
-      <Flex
-        flexDirection={["column", "column", "row"]}
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
+    <Box as="section" paddingBottom="100px" id="contact">
+      <Flex justifyContent="center">
         <Box
-          display={["none", "none", "none", "block"]}
-          flex=".3"
-          height="25rem"
-          position="relative"
+          maxWidth={["100%", "100%", "1128px", "1128px"]}
+          minHeight="300px"
+          width="100%"
         >
-          <NextImage src="/assets/ok.jpg" alt="abc" layout="fill" />
-        </Box>
-        <Box my={8} textAlign="left">
           {state.wasEmailSent ? (
-            <div>ty for email</div>
+            <Flex>fk off</Flex>
           ) : (
-            <form onSubmit={state.isLoading ? handleFakeSubmit : handleSubmit}>
-              <FormControl isDisabled={state.isLoading}>
-                <FormLabel>Imię</FormLabel>
-                <Input
-                  type="text"
-                  name="imie"
-                  placeholder="Wpisz swoje imię..."
-                  required
-                />
-              </FormControl>
-              <FormControl isDisabled={state.isLoading} mt={4}>
-                <FormLabel>Nazwisko</FormLabel>
-                <Input
-                  type="text"
-                  name="nazwisko"
-                  placeholder="Wpisz swoje nazwisko..."
-                  required
-                />
-              </FormControl>
+            <>
+              {state.isLoading ? (
+                <Flex height="100%" justifyContent="center" alignItems="center">
+                  <Spinner size="xl" />
+                </Flex>
+              ) : (
+                <>
+                  <Box as="header" padding="2rem">
+                    <AtomSectionHeader>skontaktuj się z nami</AtomSectionHeader>
+                  </Box>
 
-              <FormControl isDisabled={state.isLoading} mt={4}>
-                <FormLabel>E-mail</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Wpisz swoje nazwisko..."
-                  required
-                />
-              </FormControl>
-              <FormControl isDisabled={state.isLoading} mt={4}>
-                <FormLabel>Twoja wiadomość</FormLabel>
-                <Textarea
-                  name="text"
-                  maxLength={800}
-                  placeholder="Wpisz swoją wiadomość..."
-                  required
-                />
-              </FormControl>
-              <FormControl>
-                <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_SITE_RECAPTCHA}
-                  size="invisible"
-                  ref={reRef}
-                />
-              </FormControl>
-              <FormControl isDisabled={state.isLoading} mt={4}>
-                <Input type="submit" />
-              </FormControl>
-            </form>
+                  <Flex justifyContent="center" alignItems="center">
+                    <Box my={8}>
+                      <form
+                        onSubmit={
+                          state.isLoading ? handleFakeSubmit : handleSubmit
+                        }
+                      >
+                        <Flex
+                          direction={["column", "row", "row", "row", "row"]}
+                          paddingBottom="1rem"
+                        >
+                          <FormControl
+                            marginRight={["0", "1rem", "1rem", "1rem", "1rem"]}
+                            paddingBottom={["2rem", "0", "0", "0", "0"]}
+                            isDisabled={state.isLoading}
+                          >
+                            <FormLabel>Imię</FormLabel>
+                            <Input
+                              variant="flushed"
+                              type="text"
+                              name="imie"
+                              placeholder="Wpisz swoje imię..."
+                              required
+                            />
+                          </FormControl>
+                          <FormControl isDisabled={state.isLoading}>
+                            <FormLabel>Nazwisko</FormLabel>
+                            <Input
+                              variant="flushed"
+                              type="text"
+                              name="nazwisko"
+                              placeholder="Wpisz swoje nazwisko..."
+                              required
+                            />
+                          </FormControl>
+                        </Flex>
+
+                        <FormControl
+                          paddingBottom="1rem"
+                          isDisabled={state.isLoading}
+                          mt={4}
+                        >
+                          <FormLabel>E-mail</FormLabel>
+                          <Input
+                            variant="flushed"
+                            type="email"
+                            name="email"
+                            placeholder="Wpisz swój email..."
+                            required
+                          />
+                        </FormControl>
+                        <FormControl
+                          paddingBottom="1rem"
+                          isDisabled={state.isLoading}
+                          mt={4}
+                        >
+                          <FormLabel>Twoja wiadomość</FormLabel>
+                          <Textarea
+                            variant="flushed"
+                            name="text"
+                            maxLength={800}
+                            placeholder="Wpisz swoją wiadomość..."
+                            required
+                          />
+                        </FormControl>
+                        <FormControl>
+                          <ReCAPTCHA
+                            sitekey={process.env.NEXT_PUBLIC_SITE_RECAPTCHA}
+                            size="invisible"
+                            ref={reRef}
+                          />
+                        </FormControl>
+                        <FormControl isDisabled={state.isLoading} mt={4}>
+                          <Input type="submit" />
+                        </FormControl>
+                      </form>
+                    </Box>
+                  </Flex>
+                </>
+              )}
+            </>
           )}
         </Box>
       </Flex>

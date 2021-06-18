@@ -22,7 +22,7 @@ const OrganismHero = () => {
     theme.colors.gray[800]
   );
   return (
-    <Box as="section" padding="50px">
+    <Box as="section" padding="50px 1.4rem">
       <Flex justifyContent="center" alignItems="center">
         <Box maxWidth="1128px">
           <Flex

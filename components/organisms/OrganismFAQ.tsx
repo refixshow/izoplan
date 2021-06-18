@@ -8,6 +8,7 @@ import {
   AccordionPanel,
   AccordionItem,
   AccordionButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { AtomSectionHeader } from "../";
@@ -17,8 +18,9 @@ interface IProps {
 }
 
 const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
+  const gray = useColorModeValue("gray.800", "whiteAlpha.900");
   return (
-    <Box as="section" padding="100px 0" id="faq">
+    <Box as="section" paddingY="100px" id="faq">
       <Flex justifyContent="center" alignItems="center">
         <Box width="1128px">
           <Box as="header" paddingBottom="100px" paddingX="1rem">
@@ -27,7 +29,10 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
           <Box>
             <Accordion allowToggle>
               {FAQ.map((el) => (
-                <AccordionItem>
+                <AccordionItem
+                  borderColor={gray}
+                  key={el.pytanie.content[0].content[0].value}
+                >
                   <AccordionButton>
                     <Box flex="1" padding="24px" textAlign="left">
                       <Text

@@ -56,9 +56,7 @@ const OrganismFooter = () => {
             passHref
             href="https://www.freeprivacypolicy.com/live/85312fcc-e02f-4357-9de2-da390f55fd83"
           >
-            <ChakraLink target="_blank">
-              wszelkie prawa zastrzeżone przez izoplan.
-            </ChakraLink>
+            <ChakraLink target="_blank">wszelkie prawa zastrzeżone.</ChakraLink>
           </NextLink>
         </Text>
       </Box>

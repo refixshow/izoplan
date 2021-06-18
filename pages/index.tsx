@@ -18,7 +18,6 @@ import {
   OrganismOffer,
   OrganismDescription,
   OrganismCons,
-  OrganismPricing,
   OrganismContact,
   OrganismFooter,
   OrganismModalFB,
@@ -90,7 +89,7 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
         <OrganismReviews reviews={fbData} />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
-        <OrganismPricing />
+
         <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />
         <OrganismContact />
       </Box>

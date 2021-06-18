@@ -47,25 +47,13 @@ export const fetchAllEntries: () => Promise<
 };
 
 export const fetchAndParseFacebookReviews = async () => {
-  let resWithToken: { [key: string]: any };
   let res: { [key: string]: any };
-
   try {
-    resWithToken = await axios.get(
-      "https://graph.facebook.com/v10.0/102063341422126",
-      {
-        params: {
-          fields: "access_token",
-          access_token: process.env.NEXT_PUBLIC_FB_TOKEN,
-        },
-      }
-    );
-
     res = await axios.get("https://graph.facebook.com/v10.0/102063341422126", {
       params: {
         fields:
           "ratings.limit(3){open_graph_story,has_rating,has_review,rating,recommendation_type,review_text,reviewer}",
-        access_token: resWithToken.data.access_token,
+        access_token: process.env.NEXT_PUBLIC_FB_TOKEN,
       },
     });
   } catch (err) {

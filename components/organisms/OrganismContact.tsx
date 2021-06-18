@@ -1,4 +1,3 @@
-import NextImage from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
@@ -7,7 +6,7 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Text,
+  useColorModeValue,
   Textarea,
   Spinner,
 } from "@chakra-ui/react";
@@ -15,6 +14,8 @@ import { AtomSectionHeader } from "../";
 import axios from "axios";
 
 const OrganismContact = () => {
+  const grayColor = useColorModeValue("gray.300", "gray.800");
+
   const [state, setState] = useState({
     isLoading: false,
     wasEmailSent: false,
@@ -100,7 +101,7 @@ const OrganismContact = () => {
                   </Box>
 
                   <Flex justifyContent="center" alignItems="center">
-                    <Box my={8}>
+                    <Box my={8} backgroundColor={grayColor} padding="5rem">
                       <form
                         onSubmit={
                           state.isLoading ? handleFakeSubmit : handleSubmit

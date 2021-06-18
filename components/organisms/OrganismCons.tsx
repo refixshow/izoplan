@@ -19,6 +19,8 @@ import "swiper/components/navigation/navigation.min.css";
 
 import SwiperCore, { Autoplay, EffectCoverflow, Navigation } from "swiper/core";
 
+import { PhoneIcon, InfoIcon } from "@chakra-ui/icons";
+
 SwiperCore.use([Autoplay, Navigation, EffectCoverflow]);
 
 interface IProps {
@@ -103,11 +105,17 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
               </Text>
               <Box>
                 <NextLink href="/#description">
-                  <Button margin={[2, 3]}>co robimy</Button>
+                  <Button leftIcon={<InfoIcon />} margin={[2, 3]}>
+                    co robimy
+                  </Button>
                 </NextLink>
 
                 <NextLink href="/#contact">
-                  <Button variant="outline" margin={[2, 3]}>
+                  <Button
+                    leftIcon={<PhoneIcon />}
+                    variant="outline"
+                    margin={[2, 3]}
+                  >
                     kontakt
                   </Button>
                 </NextLink>

@@ -1,6 +1,7 @@
 import { FC } from "react";
 
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, Text, Box, useDisclosure, Link, Stack } from "@chakra-ui/react";
+import { PhoneIcon, EmailIcon } from "@chakra-ui/icons";
 import { useInView } from "react-intersection-observer";
 
 import { useEffect } from "react";
@@ -69,10 +70,23 @@ const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
                   textAlign="center"
                   height="50vh"
                 >
-                  <a href="tel:123-456-7890">123-456-7890</a>
-                  <a href="mailto:adamscieszka@gmail.com">
-                    adamscieszka@gmail.com
-                  </a>
+                  <Stack>
+                    <Link href="tel:+48733388460">
+                      <Box margin="1" padding=".4rem">
+                        <PhoneIcon marginRight="1" /> tel: 733 388 460
+                      </Box>
+                    </Link>
+                    <Link href="tel:+48513418049">
+                      <Box margin="1" padding=".4rem">
+                        <PhoneIcon marginRight="1" /> tel: 513 418 049
+                      </Box>
+                    </Link>
+                    <Link href="mailto:izoplan@o2.pl">
+                      <Box margin="1" padding=".4rem">
+                        <EmailIcon marginRight="1" /> e-mail: izoplan@o2.pl
+                      </Box>
+                    </Link>
+                  </Stack>
                 </Flex>
               </ModalBody>
               <ModalFooter>

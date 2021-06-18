@@ -11,6 +11,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { QuestionIcon, ChevronRightIcon } from "@chakra-ui/icons";
+
 import { AtomSectionHeader } from "../";
 
 interface IProps {
@@ -39,16 +41,23 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
                         as="h4"
                         fontWeight="bold"
                         textTransform="capitalize"
-                        _after={{
-                          content: "'?'",
-                        }}
                       >
+                        <QuestionIcon
+                          marginRight="1rem"
+                          width="24px"
+                          height="24px"
+                        />
                         {el.pytanie.content[0].content[0].value}
                       </Text>
                     </Box>
                   </AccordionButton>
 
                   <AccordionPanel padding="44px" pb={4}>
+                    <ChevronRightIcon
+                      marginRight=".4rem"
+                      width="24px"
+                      height="24px"
+                    />
                     {el.odpowiedz.content[0].content[0].value}
                   </AccordionPanel>
                 </AccordionItem>

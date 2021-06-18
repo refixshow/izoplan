@@ -34,7 +34,9 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
                 width="400px"
                 padding="52px 24px 24px"
               >
-                <Box
+                <Flex
+                  justifyContent="space-between"
+                  flexDirection="column"
                   minHeight="170px"
                   padding="52px 24px 24px"
                   boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"
@@ -64,7 +66,7 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
                       </Text>
                     </Box>
                   </Box>
-                  <Box color={gray}>
+                  <Box paddingTop="25px" color={gray}>
                     <ChakraLink
                       rel="noreferrer"
                       href={`https://facebook.com/${el.open_graph_story.id}`}
@@ -73,7 +75,7 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
                       Zobacz opinie
                     </ChakraLink>
                   </Box>
-                </Box>
+                </Flex>
               </Box>
             ))}
           </Flex>

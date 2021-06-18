@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
@@ -9,49 +9,74 @@ import {
   Input,
   Text,
   Textarea,
-  useDisclosure,
 } from "@chakra-ui/react";
+import axios from "axios";
+
 const OrganismContact = () => {
-  const { isOpen, onToggle } = useDisclosure({ isOpen: false });
+  const [state, setState] = useState({
+    isLoading: false,
+    wasEmailSent: false,
+    isError: false,
+  });
+
   const reRef = useRef<ReCAPTCHA>();
+
+  const handleFakeSubmit = useCallback((event) => {
+    event.preventDefault();
+  }, []);
 
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
 
-    if (isOpen) {
+    if (state.wasEmailSent !== null) {
       return;
     }
 
-    onToggle();
-
-    try {
-      var token = await reRef.current.executeAsync();
-      reRef.current.reset();
-    } catch (err) {
-      console.error(err);
+    if (state.isLoading) {
+      return;
     }
 
-    const res = await fetch("/api/mailer", {
-      body: JSON.stringify({
-        imie: event.target.imie.value,
-        nazwisko: event.target.nazwisko.value,
-        email: event.target.email.value,
-        text: event.target.text.value,
-        token,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+    setState((prev) => ({ ...prev, isLoading: true }));
 
-    const result = await res.json();
+    try {
+      const token = await reRef.current.executeAsync();
+      reRef.current.reset();
 
-    onToggle();
+      const res = await axios.post(
+        "/api/mailer",
+        {
+          imie: event.target.imie.value,
+          nazwisko: event.target.nazwisko.value,
+          email: event.target.email.value,
+          text: event.target.text.value,
+          token,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(res);
+      localStorage.setItem("email", "true");
+    } catch (err) {
+      console.error(err);
+      setState((prev) => ({ ...prev, isLoading: false, isError: true }));
+      return;
+    }
+
+    setState((prev) => ({ ...prev, isLoading: false }));
+  }, []);
+
+  useEffect(() => {
+    setState((prev) => ({
+      ...prev,
+      wasEmailSent: JSON.parse(window.localStorage.getItem("email")),
+    }));
   }, []);
 
   return (
-    <Box as="section" id="contact" padding={["1rem", "2rem"]}>
+    <Box as="section" id="contact">
       <Text
         _after={{
           content: '""',
@@ -87,55 +112,59 @@ const OrganismContact = () => {
           <NextImage src="/assets/ok.jpg" alt="abc" layout="fill" />
         </Box>
         <Box my={8} textAlign="left">
-          <form onSubmit={handleSubmit}>
-            <FormControl>
-              <FormLabel>Imię</FormLabel>
-              <Input
-                type="text"
-                name="imie"
-                placeholder="Wpisz swoje imię..."
-                required
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Nazwisko</FormLabel>
-              <Input
-                type="text"
-                name="nazwisko"
-                placeholder="Wpisz swoje nazwisko..."
-                required
-              />
-            </FormControl>
+          {state.wasEmailSent ? (
+            <div>ty for email</div>
+          ) : (
+            <form onSubmit={state.isLoading ? handleFakeSubmit : handleSubmit}>
+              <FormControl isDisabled={state.isLoading}>
+                <FormLabel>Imię</FormLabel>
+                <Input
+                  type="text"
+                  name="imie"
+                  placeholder="Wpisz swoje imię..."
+                  required
+                />
+              </FormControl>
+              <FormControl isDisabled={state.isLoading} mt={4}>
+                <FormLabel>Nazwisko</FormLabel>
+                <Input
+                  type="text"
+                  name="nazwisko"
+                  placeholder="Wpisz swoje nazwisko..."
+                  required
+                />
+              </FormControl>
 
-            <FormControl mt={4}>
-              <FormLabel>E-mail</FormLabel>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Wpisz swoje nazwisko..."
-                required
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Twoja wiadomość</FormLabel>
-              <Textarea
-                name="text"
-                maxLength={800}
-                placeholder="Wpisz swoją wiadomość..."
-                required
-              />
-            </FormControl>
-            <FormControl>
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_SITE_RECAPTCHA}
-                size="invisible"
-                ref={reRef}
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <Input disabled={isOpen} type="submit" />
-            </FormControl>
-          </form>
+              <FormControl isDisabled={state.isLoading} mt={4}>
+                <FormLabel>E-mail</FormLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Wpisz swoje nazwisko..."
+                  required
+                />
+              </FormControl>
+              <FormControl isDisabled={state.isLoading} mt={4}>
+                <FormLabel>Twoja wiadomość</FormLabel>
+                <Textarea
+                  name="text"
+                  maxLength={800}
+                  placeholder="Wpisz swoją wiadomość..."
+                  required
+                />
+              </FormControl>
+              <FormControl>
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_SITE_RECAPTCHA}
+                  size="invisible"
+                  ref={reRef}
+                />
+              </FormControl>
+              <FormControl isDisabled={state.isLoading} mt={4}>
+                <Input type="submit" />
+              </FormControl>
+            </form>
+          )}
         </Box>
       </Flex>
     </Box>

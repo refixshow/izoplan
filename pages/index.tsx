@@ -6,9 +6,10 @@ import {
   TFetchAllEntries,
 } from "../lib";
 import { Box, useColorModeValue, theme } from "@chakra-ui/react";
-
-import { FC, useMemo } from "react";
+import { FC, useEffect, useMemo } from "react";
 import Head from "next/head";
+
+import * as Facebook from "fb-sdk-wrapper";
 
 import {
   MoleculeMainNavBar,
@@ -26,6 +27,7 @@ import {
 } from "../components";
 
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const MotionBox = motion(Box);
 
@@ -39,10 +41,33 @@ interface IProps {
 const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
 
+  // @ts-ignore
+  useEffect(async () => {
+    try {
+      await Facebook.load();
+      await Facebook.init({
+        appId: "326609815529835",
+      });
+      const helo = await Facebook.login({
+        scope: "public_profile,email,user_friends",
+        return_scopes: true,
+      });
+
+      const aa = await Facebook.api("/me", "GET", { fields: "id,name" });
+
+      console.log(helo, aa);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   const parsedcontentfulData = useMemo(
     () => parseContentfulData(contentfulData),
     [contentfulData]
   );
+
+  // @ts-ignore
+  useEffect(async () => {}, []);
 
   return (
     <MotionBox

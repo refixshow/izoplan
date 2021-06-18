@@ -19,7 +19,9 @@
     "contentful": "^8.3.5",
     "cors": "^2.8.5",
     "express-validator": "^6.11.1",
+    "facebook-js-sdk": "^0.3.4",
     "fb": "^2.0.0",
+    "fb-sdk-wrapper": "^1.1.0",
     "framer-motion": "^4.1.17",
     "googlemaps": "^1.12.0",
     "lru-cache": "^6.0.0",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
+    "@types/facebook-js-sdk": "^3.3.2",
     "@types/fb": "0.0.28",
     "@types/google__maps": "^0.5.14",
     "@types/googlemaps": "^3.43.3",

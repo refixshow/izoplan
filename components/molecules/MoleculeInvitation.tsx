@@ -45,6 +45,7 @@ const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
       textAlign="center"
       justifyContent="center"
       alignItems="center"
+      color="whiteAlpha.900"
       backgroundColor={yellow ? "yellow.500" : grayColor}
       gridColumn="full-start / full-end"
       padding="64px 0"

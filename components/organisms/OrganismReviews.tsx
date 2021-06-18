@@ -66,6 +66,7 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
                   </Box>
                   <Box color={gray}>
                     <ChakraLink
+                      rel="noreferrer"
                       href={`https://facebook.com/${el.open_graph_story.id}`}
                       target="_blank"
                     >

@@ -51,8 +51,6 @@ export const fetchAndParseFacebookReviews = async () => {
   let res: { [key: string]: any };
 
   try {
-    // console.log(helo);
-
     resWithToken = await axios.get(
       "https://graph.facebook.com/v10.0/102063341422126",
       {

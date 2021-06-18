@@ -41,37 +41,10 @@ interface IProps {
 const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
   const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
 
-  // @ts-ignore
-  useEffect(async () => {
-    try {
-      await Facebook.load();
-      await Facebook.init({
-        appId: "326609815529835",
-      });
-      const helo = await Facebook.login({
-        scope:
-          "pages_show_list,pages_read_user_content,pages_read_engagement,public_profile",
-        return_scopes: true,
-      });
-
-      const aa = await Facebook.api(`/102063341422126`, "GET", {
-        fields:
-          "ratings.limit(3){open_graph_story,has_rating,has_review,rating,recommendation_type,review_text,reviewer}",
-      });
-
-      console.log(helo, aa);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-
   const parsedcontentfulData = useMemo(
     () => parseContentfulData(contentfulData),
     [contentfulData]
   );
-
-  // @ts-ignore
-  useEffect(async () => {}, []);
 
   return (
     <MotionBox

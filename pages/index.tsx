@@ -49,11 +49,15 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
         appId: "326609815529835",
       });
       const helo = await Facebook.login({
-        scope: "public_profile,email,user_friends",
+        scope:
+          "pages_show_list,pages_read_user_content,pages_read_engagement,public_profile",
         return_scopes: true,
       });
 
-      const aa = await Facebook.api("/me", "GET", { fields: "id,name" });
+      const aa = await Facebook.api(`/102063341422126`, "GET", {
+        fields:
+          "ratings.limit(3){open_graph_story,has_rating,has_review,rating,recommendation_type,review_text,reviewer}",
+      });
 
       console.log(helo, aa);
     } catch (err) {

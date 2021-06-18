@@ -115,6 +115,8 @@ export default async (req, res) => {
     await limiter.check(res, 10, "CACHE_TOKEN");
     await validateReCAPTCHA(req.body.token);
 
+    console.log(req.body);
+
     const msg = {
       to: "adamscieszka@gmail.com",
       from: "adamscieszka@gmail.com",

@@ -10,17 +10,13 @@ import {
   Stack,
   Button,
   useColorModeValue,
-  theme,
 } from "@chakra-ui/react";
 import { ArrowDownIcon, EmailIcon } from "@chakra-ui/icons";
 
 SwiperCore.use([EffectCube]);
 
 const OrganismHero = () => {
-  const grayColor = useColorModeValue(
-    theme.colors.gray[300],
-    theme.colors.gray[800]
-  );
+  const grayColor = useColorModeValue("gray.300", "gray.800");
   return (
     <Box as="section" padding="50px 1.4rem">
       <Flex justifyContent="center" alignItems="center">
@@ -39,26 +35,21 @@ const OrganismHero = () => {
             <Box
               textAlign={["center", "center", "center", "left", "left"]}
               width={["auto", "auto", "auto", "35%", "40%"]}
+              maxWidth="80ch"
             >
               <Stack>
-                <Text
-                  as="h1"
-                  marginBottom="3"
-                  fontSize={"4xl"}
-                  lineHeight="1.2"
-                  fontWeight="bold"
-                >
+                <Text as="h1" marginBottom="3" fontSize="4xl" fontWeight="bold">
                   Profesjonalne świadczenia usług w zakresie izolacji termicznej
                   budynków
                 </Text>
-                <Text fontSize="xl">
+                <Text paddingTop=".5rem" fontSize="xl">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Quaerat harum, adipisci omnis molestias, consequuntur maxime
                   delectus minima illo cumque laboriosam autem doloremque,
                   laborum enim nesciunt!
                 </Text>
               </Stack>
-              <Box marginTop="6">
+              <Box marginTop="2rem">
                 <NextLink href="/#offer">
                   <Button
                     marginRight="5"

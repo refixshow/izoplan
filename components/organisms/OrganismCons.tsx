@@ -8,7 +8,6 @@ import {
   Text,
   Box,
   Button,
-  theme,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,10 +27,7 @@ interface IProps {
 }
 
 const OrganismCons: FC<IProps> = ({ cons }) => {
-  const grayColor = useColorModeValue(
-    theme.colors.gray[300],
-    theme.colors.gray[800]
-  );
+  const grayColor = useColorModeValue("gray.300", "gray.800");
   return (
     <Box
       as="section"
@@ -81,7 +77,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                         <Text as="h4" fontSize="md" fontWeight="bold">
                           {el.tytul}
                         </Text>
-                        <Text as="p">
+                        <Text maxWidth="50ch" as="p">
                           {el.opis.content[0].content[0].value}
                         </Text>
                       </Stack>
@@ -92,21 +88,15 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
             </Swiper>
           </Box>
           <Flex justifyContent="center" textAlign="center">
-            <Box maxWidth={["100%", "100%", "70%", "70%"]} padding="6">
-              <Text
-                marginTop="5"
-                marginBottom="2"
-                as="h3"
-                fontSize="xl"
-                fontWeight="bold"
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-                consequatur sapiente dolore, qui maiores saepe?
+            <Box maxWidth="70ch" padding="2rem 1em">
+              <Text marginTop="5" marginBottom="2" as="h3" fontSize="xl">
+                Jesteś zainteresowany naszą pracą? Zapraszamy do współpracy oraz
+                szybkiej obsługi!
               </Text>
-              <Box>
+              <Box marginTop="2rem">
                 <NextLink href="/#description">
                   <Button leftIcon={<InfoIcon />} margin={[2, 3]}>
-                    co robimy
+                    szczegóły
                   </Button>
                 </NextLink>
 
@@ -115,6 +105,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                     leftIcon={<PhoneIcon />}
                     variant="outline"
                     margin={[2, 3]}
+                    borderWidth="3px"
                   >
                     kontakt
                   </Button>

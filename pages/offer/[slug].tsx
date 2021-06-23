@@ -42,7 +42,6 @@ const Offer = ({ pageData }) => {
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
-
         <meta name="robots" content="index, follow" />
         <meta name="language" content="Polish" />
         <title>Izoplan - {pageData.fields.tytul}</title>

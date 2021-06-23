@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
@@ -6,16 +6,15 @@ import {
   FormControl,
   FormLabel,
   Input,
-  useColorModeValue,
+  Text,
   Textarea,
   Spinner,
 } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
 import { AtomSectionHeader } from "../";
 import axios from "axios";
 
 const OrganismContact = () => {
-  const grayColor = useColorModeValue("gray.300", "gray.800");
-
   const [state, setState] = useState({
     isLoading: false,
     wasEmailSent: false,
@@ -31,7 +30,7 @@ const OrganismContact = () => {
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
 
-    if (state.wasEmailSent !== null) {
+    if (state.wasEmailSent === true) {
       return;
     }
 
@@ -71,10 +70,22 @@ const OrganismContact = () => {
     setState((prev) => ({ ...prev, isLoading: false }));
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const persistedWasEmailSent = JSON.parse(
+      window.localStorage.getItem("email")
+    );
+
+    if (persistedWasEmailSent !== null) {
+      setState((prev) => ({
+        ...prev,
+        wasEmailSent: persistedWasEmailSent,
+      }));
+      return;
+    }
+
     setState((prev) => ({
       ...prev,
-      wasEmailSent: JSON.parse(window.localStorage.getItem("email")),
+      wasEmailSent: false,
     }));
   }, []);
 
@@ -87,7 +98,17 @@ const OrganismContact = () => {
           width="100%"
         >
           {state.wasEmailSent ? (
-            <Flex>fk off</Flex>
+            <Flex
+              width="100%"
+              height="100%"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box paddingX="1em" textAlign="center">
+                <Text as="h1">Dziękujemy za wiadomość!</Text>
+                <EmailIcon marginTop="2rem" width="84px" height="84px" />
+              </Box>
+            </Flex>
           ) : (
             <>
               {state.isLoading ? (
@@ -101,7 +122,13 @@ const OrganismContact = () => {
                   </Box>
 
                   <Flex justifyContent="center" alignItems="center">
-                    <Box my={8} backgroundColor={grayColor} padding="5rem">
+                    <Box
+                      my={8}
+                      backgroundColor="gray.800"
+                      color="whiteAlpha.900"
+                      padding="4rem"
+                      boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"
+                    >
                       <form
                         onSubmit={
                           state.isLoading ? handleFakeSubmit : handleSubmit

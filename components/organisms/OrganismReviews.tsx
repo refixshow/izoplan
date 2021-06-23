@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 
+import NextLink from "next/link";
+
 import {
   Box,
   Flex,
   Text,
   useColorModeValue,
   Link as ChakraLink,
+  Button,
 } from "@chakra-ui/react";
 
 interface IProps {
@@ -28,9 +31,6 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
                 key={el.review_text}
                 as="article"
                 position="relative"
-                _odd={{
-                  top: ["0", "0", "0", "40px", "40px"],
-                }}
                 width="400px"
                 padding="52px 24px 24px"
               >
@@ -79,6 +79,13 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
               </Box>
             ))}
           </Flex>
+          <Box paddingTop="100px" textAlign="center">
+            <NextLink href="/reviews">
+              <ChakraLink>
+                <Button>zobacz więcej opinii</Button>
+              </ChakraLink>
+            </NextLink>
+          </Box>
         </Box>
       </Flex>
     </Box>

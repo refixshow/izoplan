@@ -15,8 +15,6 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useColorModeValue,
-  theme,
 } from "@chakra-ui/react";
 
 interface IProps {
@@ -28,11 +26,6 @@ interface IProps {
 const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { ref, inView } = useInView({ triggerOnce: true });
-
-  const grayColor = useColorModeValue(
-    theme.colors.gray[300],
-    theme.colors.gray[800]
-  );
 
   useEffect(() => {
     if (inView) {
@@ -47,7 +40,7 @@ const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
       justifyContent="center"
       alignItems="center"
       color="whiteAlpha.900"
-      backgroundColor={yellow ? "yellow.500" : grayColor}
+      backgroundColor={yellow ? "yellow.500" : "gray.800"}
       gridColumn="full-start / full-end"
       padding="64px 0"
     >
@@ -64,26 +57,24 @@ const MoleculeInvitation: FC<IProps> = ({ text, yellow, popup }) => {
               <ModalHeader>Ciepło polecamy!</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Flex
-                  justifyContent="center"
-                  alignItems="center"
-                  textAlign="center"
-                  height="50vh"
-                >
+                <Flex justifyContent="center" alignItems="center" height="50vh">
                   <Stack>
                     <Link href="tel:+48733388460">
                       <Box margin="1" padding=".4rem">
-                        <PhoneIcon marginRight="1" /> tel: 733 388 460
+                        <PhoneIcon width="34px" height="34px" marginRight="1" />{" "}
+                        tel: 733 388 460
                       </Box>
                     </Link>
                     <Link href="tel:+48513418049">
                       <Box margin="1" padding=".4rem">
-                        <PhoneIcon marginRight="1" /> tel: 513 418 049
+                        <PhoneIcon width="34px" height="34px" marginRight="1" />{" "}
+                        tel: 513 418 049
                       </Box>
                     </Link>
                     <Link href="mailto:izoplan@o2.pl">
                       <Box margin="1" padding=".4rem">
-                        <EmailIcon marginRight="1" /> e-mail: izoplan@o2.pl
+                        <EmailIcon width="34px" height="34px" marginRight="1" />{" "}
+                        e-mail: izoplan@o2.pl
                       </Box>
                     </Link>
                   </Stack>

@@ -53,7 +53,7 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
         <Box maxWidth="1128px" width="100%" position="relative">
           {masonry ? (
             <Masonry
-              itemKey={uuidv4()}
+              itemKey={() => uuidv4()}
               itemStyle={{
                 width: tileWidth,
                 display: "flex",

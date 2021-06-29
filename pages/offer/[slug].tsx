@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import {
   MoleculeMainNavBar,
   OrganismFooter,
+  OrganismSectionOffer,
   MoleculeInvitation,
   OrganismContact,
 } from "../../components";
@@ -98,6 +99,7 @@ const Offer = ({ pageData }) => {
       </Head>
       <MoleculeMainNavBar />
       <Box as="main">
+        <OrganismSectionOffer offer={pageData} />
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
         <OrganismContact />
       </Box>

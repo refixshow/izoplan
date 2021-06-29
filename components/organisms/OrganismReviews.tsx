@@ -2,11 +2,12 @@ import { FC, useMemo } from "react";
 import { Masonry } from "masonic";
 import NextLink from "next/link";
 
+import { v4 as uuidv4 } from "uuid";
+
 import {
   Box,
   Flex,
   useColorModeValue,
-  Link as ChakraLink,
   Button,
   useBreakpointValue,
 } from "@chakra-ui/react";
@@ -26,7 +27,7 @@ const parseReviews = (reviews: { [key: string]: any }[]) => {
   const limitOfReviewsToDisplay = 3;
   return reviews.filter((el) => {
     if (counter === limitOfReviewsToDisplay) return false;
-    if (el.review_text.length > 55 && el.recommendation_type === "positive") {
+    if (el.review_text.length > 55) {
       counter++;
       return true;
     }
@@ -34,7 +35,8 @@ const parseReviews = (reviews: { [key: string]: any }[]) => {
   });
 };
 
-const MasonryCard = ({ index, data, width }) => <AtomReview review={data} />;
+const MasonryCard = ({ index, data, width }) =>
+  data.recommendation_type === "positive" ? <AtomReview review={data} /> : null;
 
 const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
@@ -51,6 +53,7 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
         <Box maxWidth="1128px" width="100%" position="relative">
           {masonry ? (
             <Masonry
+              itemKey={uuidv4()}
               itemStyle={{
                 width: tileWidth,
                 display: "flex",
@@ -65,23 +68,25 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
           ) : (
             <Flex flexWrap="wrap" justifyContent="center">
               {parsedReviews.map((review) => (
-                <AtomReview review={review} />
+                <>
+                  {review.recommendation_type === "positive" && (
+                    <AtomReview keyNeeded review={review} />
+                  )}
+                </>
               ))}
             </Flex>
           )}
         </Box>
-        {cta && (
-          <Box paddingTop="100px" textAlign="center">
-            <NextLink href="/reviews">
-              <ChakraLink>
-                <Button backgroundColor={grayColor}>
-                  zobacz więcej opinii
-                </Button>
-              </ChakraLink>
-            </NextLink>
-          </Box>
-        )}
       </Flex>
+      {cta && (
+        <Box paddingTop="100px" textAlign="center">
+          <NextLink href="/reviews">
+            <Button padding="2rem" backgroundColor={grayColor}>
+              zobacz więcej opinii
+            </Button>
+          </NextLink>
+        </Box>
+      )}
     </Box>
   );
 };

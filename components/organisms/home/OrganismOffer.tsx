@@ -7,7 +7,6 @@ import {
   Flex,
   Text,
   Stack,
-  theme,
   useColorModeValue,
   useColorMode,
   Link as ChakraLink,
@@ -28,9 +27,7 @@ interface IProps {
 const OrganismOffer: FC<IProps> = ({ offer }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
-
   const DarkColor = useColorModeValue("#eee", "gray.700");
-
   const grayColor = useColorModeValue("gray.300", "gray.800");
 
   return (

@@ -18,6 +18,7 @@ interface IProps {
   padding?: boolean;
   limit?: boolean;
   masonry?: boolean;
+  cta?: boolean;
 }
 
 const parseReviews = (reviews: { [key: string]: any }[]) => {
@@ -35,7 +36,7 @@ const parseReviews = (reviews: { [key: string]: any }[]) => {
 
 const MasonryCard = ({ index, data, width }) => <AtomReview review={data} />;
 
-const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry }) => {
+const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
   const colums = useBreakpointValue([1, 1, 2, 2, 3]);
   const tileWidth = useBreakpointValue(["100%", "100%", "50%", "50%", "400px"]);
@@ -69,6 +70,17 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry }) => {
             </Flex>
           )}
         </Box>
+        {cta && (
+          <Box paddingTop="100px" textAlign="center">
+            <NextLink href="/reviews">
+              <ChakraLink>
+                <Button backgroundColor={grayColor}>
+                  zobacz więcej opinii
+                </Button>
+              </ChakraLink>
+            </NextLink>
+          </Box>
+        )}
       </Flex>
     </Box>
   );

@@ -29,12 +29,9 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
 
-  const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
+  const DarkColor = useColorModeValue("#eee", "gray.700");
 
-  const grayColor = useColorModeValue(
-    theme.colors.gray[300],
-    theme.colors.gray[800]
-  );
+  const grayColor = useColorModeValue("gray.300", "gray.800");
 
   return (
     <Box

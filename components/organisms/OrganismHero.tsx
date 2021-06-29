@@ -43,10 +43,9 @@ const OrganismHero = () => {
                   budynków
                 </Text>
                 <Text paddingTop=".5rem" fontSize="xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quaerat harum, adipisci omnis molestias, consequuntur maxime
-                  delectus minima illo cumque laboriosam autem doloremque,
-                  laborum enim nesciunt!
+                  Izolacja pianą PUR to rozwiązanie, na które decyduje się wielu
+                  prywatnych inwestorów, jednak zapewniamy, że doskonale
+                  sprawdzi się również w przypadku dużych inwestycji.
                 </Text>
               </Stack>
               <Box marginTop="2rem">

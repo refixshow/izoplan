@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
@@ -70,7 +70,7 @@ const OrganismContact = () => {
     setState((prev) => ({ ...prev, isLoading: false }));
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const persistedWasEmailSent = JSON.parse(
       window.localStorage.getItem("email")
     );
@@ -124,7 +124,13 @@ const OrganismContact = () => {
                   <Flex justifyContent="center" alignItems="center">
                     <Box
                       my={8}
-                      backgroundColor="gray.800"
+                      backgroundColor="gray.900"
+                      bgGradient="linear(135deg, gray.900, gray.700)"
+                      backgroundSize="200%"
+                      transition="all .4s"
+                      _hover={{
+                        backgroundPositionX: "right",
+                      }}
                       color="whiteAlpha.900"
                       padding="4rem"
                       boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"

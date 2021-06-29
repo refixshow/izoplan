@@ -26,7 +26,6 @@ import {
 } from "../components";
 
 import { motion } from "framer-motion";
-import axios from "axios";
 
 const MotionBox = motion(Box);
 
@@ -38,7 +37,7 @@ interface IProps {
 }
 
 const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
-  const DarkColor = useColorModeValue("#eee", theme.colors.gray[700]);
+  const DarkColor = useColorModeValue("#eee", "gray.700");
 
   const parsedcontentfulData = useMemo(
     () => parseContentfulData(contentfulData),
@@ -52,31 +51,71 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
       backgroundColor={DarkColor}
     >
       <Head>
+        <meta name="author" content="Adam Ścieszka" />
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=6,user-scalable=no"
         />
-        <meta name="description" content="Description" />
-        <meta name="keywords" content="Keywords" />
+        <meta
+          name="description"
+          content="Firma zajmuje się pracami izolacyjnymi w obiektach mieszkaniowych. Ocieplane i docieplane są poddasza, strychy, fundamenty, a także ściany"
+        />
+        <meta
+          name="keywords"
+          content="izoplan, ocieplanie domów, oleśnica, izoplan oleśnica, izoplanpur, izolacje pianą pur, piana, piana pur, pur, izolacje, ocieplanie, poddasze, fundamenty, ocieplanie poddaszy, ocieplanie fundamentów, ocieplanie ścian, ściany, ocieplanie stropów, stropy, fundament"
+        />
         <title>Izoplan - Strona główna</title>
-
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#eee" />
+
         <link
-          href="/favicon-16x16.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        />
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="57x57"
+          href="/assets/apple-touch-icon-57x57.png"
         />
         <link
-          href="/favicon-32x32.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
+          rel="apple-touch-icon"
+          sizes="72x72"
+          href="/assets/apple-touch-icon-72x72.png"
         />
-        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#317EFB" />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/assets/apple-touch-icon-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="114x114"
+          href="/assets/apple-touch-icon-114x114.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="120x120"
+          href="/assets/apple-touch-icon-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/assets/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="152x152"
+          href="/assets/apple-touch-icon-152x152.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/assets/apple-touch-icon-180x180.png"
+        />
       </Head>
       <OrganismModalFB />
       <MoleculeMainNavBar />

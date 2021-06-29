@@ -17,6 +17,7 @@ interface IProps {
 }
 
 const OrganismReviews: FC<IProps> = ({ reviews }) => {
+  const grayColor = useColorModeValue("gray.300", "gray.800");
   const white = useColorModeValue("gray.800", "whiteAlpha.900");
   const gray = useColorModeValue("whiteAlpha.900", "gray.800");
   const yellow = useColorModeValue("yellow.500", "yellow.400");
@@ -82,7 +83,9 @@ const OrganismReviews: FC<IProps> = ({ reviews }) => {
           <Box paddingTop="100px" textAlign="center">
             <NextLink href="/reviews">
               <ChakraLink>
-                <Button>zobacz więcej opinii</Button>
+                <Button backgroundColor={grayColor}>
+                  zobacz więcej opinii
+                </Button>
               </ChakraLink>
             </NextLink>
           </Box>

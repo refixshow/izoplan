@@ -22,32 +22,20 @@ const Offer = ({ pageData }) => {
       exit={{ opacity: 0 }}
     >
       <Head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=6,user-scalable=no"
+        />
+        <meta
+          name="keywords"
+          content="izoplan, ocieplanie domów, oleśnica, izoplan oleśnica, izoplanpur, izolacje pianą pur, piana, piana pur, pur, izolacje, ocieplanie, poddasze, fundamenty, ocieplanie poddaszy, ocieplanie fundamentów, ocieplanie ścian, ściany, ocieplanie stropów, stropy, fundament"
         />
         <link rel="manifest" href="/manifest.json" />
-        <link
-          href="/favicon-16x16.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/favicon-32x32.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-        />
-        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#317EFB" />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="Polish" />
+        <meta name="theme-color" content="#eee" />
         <title>Izoplan - {pageData.fields.tytul}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content={pageData.fields.opisOgolny} />
-        <meta name="keywords" content="izoplan, oleśnica" />
         <meta name="author" content="Adam Ścieszka" />
         <meta
           property="og:title"
@@ -55,8 +43,50 @@ const Offer = ({ pageData }) => {
           key="title"
         />
         <link
-          rel="icon"
-          href={`http:${pageData.fields.ikona.fields.file.url}`}
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        />
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="57x57"
+          href="/assets/apple-touch-icon-57x57.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="72x72"
+          href="/assets/apple-touch-icon-72x72.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/assets/apple-touch-icon-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="114x114"
+          href="/assets/apple-touch-icon-114x114.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="120x120"
+          href="/assets/apple-touch-icon-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/assets/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="152x152"
+          href="/assets/apple-touch-icon-152x152.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/assets/apple-touch-icon-180x180.png"
         />
       </Head>
       <MoleculeMainNavBar />

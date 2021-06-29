@@ -4,14 +4,6 @@ import axios from "axios";
 
 export type TFetchAllEntries = EntryCollection<unknown>;
 
-// PL -> EN
-// cennik -> pricing
-// galeria -> gallery
-// korzysci -> cons
-// oferta -> offer
-// opis pracy -> work description
-// pytania -> questions
-
 export const entries = {
   cennik: "cennik",
   galeria: "galeria",

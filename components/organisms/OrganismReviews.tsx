@@ -1,94 +1,73 @@
-import { FC } from "react";
-import { PlusSquareIcon } from "@chakra-ui/icons";
-
+import { FC, useMemo } from "react";
+import { Masonry } from "masonic";
 import NextLink from "next/link";
 
 import {
   Box,
   Flex,
-  Text,
   useColorModeValue,
   Link as ChakraLink,
   Button,
+  useBreakpointValue,
 } from "@chakra-ui/react";
+
+import { AtomReview } from "..";
 
 interface IProps {
   reviews: { [key: string]: any }[];
+  padding?: boolean;
+  limit?: boolean;
+  masonry?: boolean;
 }
 
-const OrganismReviews: FC<IProps> = ({ reviews }) => {
+const parseReviews = (reviews: { [key: string]: any }[]) => {
+  let counter = 0;
+  const limitOfReviewsToDisplay = 3;
+  return reviews.filter((el) => {
+    if (counter === limitOfReviewsToDisplay) return false;
+    if (el.review_text.length > 55 && el.recommendation_type === "positive") {
+      counter++;
+      return true;
+    }
+    return false;
+  });
+};
+
+const MasonryCard = ({ index, data, width }) => <AtomReview review={data} />;
+
+const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry }) => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
-  const white = useColorModeValue("gray.800", "whiteAlpha.900");
-  const gray = useColorModeValue("whiteAlpha.900", "gray.800");
-  const yellow = useColorModeValue("yellow.500", "yellow.400");
+  const colums = useBreakpointValue([1, 1, 2, 2, 3]);
+  const tileWidth = useBreakpointValue(["100%", "100%", "50%", "50%", "400px"]);
+  const parsedReviews = useMemo(
+    () => (limit ? parseReviews(reviews) : reviews),
+    [reviews]
+  );
 
   return (
     <Box as="section" paddingTop="100px" paddingBottom="150px" id="reviews">
       <Flex justifyContent="center">
-        <Box maxWidth="1128px" position="relative">
-          <Flex flexWrap="wrap" justifyContent="center">
-            {reviews.map((el) => (
-              <Box
-                key={el.review_text}
-                as="article"
-                position="relative"
-                width="400px"
-                padding="52px 24px 24px"
-              >
-                <Flex
-                  justifyContent="space-between"
-                  flexDirection="column"
-                  minHeight="170px"
-                  padding="52px 24px 24px"
-                  boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"
-                  backgroundColor={white}
-                >
-                  <Box position="relative">
-                    <Box
-                      position="absolute"
-                      width="45px"
-                      height="45px"
-                      top="-80px"
-                    >
-                      <PlusSquareIcon
-                        width="100%"
-                        color={yellow}
-                        height="100%"
-                      />
-                    </Box>
-                    <Box>
-                      <Text
-                        lineHeight="24px"
-                        letterSpacing="-0.1px"
-                        fontStyle="italic"
-                        color={gray}
-                      >
-                        {el.review_text}
-                      </Text>
-                    </Box>
-                  </Box>
-                  <Box paddingTop="25px" color={gray}>
-                    <ChakraLink
-                      rel="noreferrer"
-                      href={`https://facebook.com/${el.open_graph_story.id}`}
-                      target="_blank"
-                    >
-                      Zobacz opinie
-                    </ChakraLink>
-                  </Box>
-                </Flex>
-              </Box>
-            ))}
-          </Flex>
-          <Box paddingTop="100px" textAlign="center">
-            <NextLink href="/reviews">
-              <ChakraLink>
-                <Button backgroundColor={grayColor}>
-                  zobacz więcej opinii
-                </Button>
-              </ChakraLink>
-            </NextLink>
-          </Box>
+        <Box maxWidth="1128px" width="100%" position="relative">
+          {masonry ? (
+            <Masonry
+              itemStyle={{
+                width: tileWidth,
+                display: "flex",
+                alignContent: "center",
+                justifyContent: "center",
+              }}
+              columnGutter={colums * 10}
+              columnCount={colums}
+              items={parsedReviews}
+              render={MasonryCard}
+            />
+          ) : (
+            <Flex flexWrap="wrap" justifyContent="center">
+              {parsedReviews.map((review) => (
+                <AtomReview review={review} />
+              ))}
+            </Flex>
+          )}
         </Box>
       </Flex>
     </Box>

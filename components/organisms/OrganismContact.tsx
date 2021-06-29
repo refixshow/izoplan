@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, FC } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
@@ -14,7 +14,11 @@ import { EmailIcon } from "@chakra-ui/icons";
 import { AtomSectionHeader } from "../";
 import axios from "axios";
 
-const OrganismContact = () => {
+interface IProps {
+  padding?: boolean;
+}
+
+const OrganismContact: FC<IProps> = ({ padding }) => {
   const [state, setState] = useState({
     isLoading: false,
     wasEmailSent: false,
@@ -90,7 +94,12 @@ const OrganismContact = () => {
   }, []);
 
   return (
-    <Box as="section" paddingBottom="100px" id="contact">
+    <Box
+      as="section"
+      paddingTop={padding ? "2rem" : "0"}
+      paddingBottom="100px"
+      id="contact"
+    >
       <Flex justifyContent="center">
         <Box
           maxWidth={["100%", "100%", "1128px", "1128px"]}
@@ -206,7 +215,7 @@ const OrganismContact = () => {
                           />
                         </FormControl>
                         <FormControl isDisabled={state.isLoading} mt={4}>
-                          <Input type="submit" />
+                          <Input cursor="pointer" type="submit" />
                         </FormControl>
                       </form>
                     </Box>

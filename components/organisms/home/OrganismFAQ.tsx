@@ -13,7 +13,7 @@ import {
 
 import { QuestionIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
-import { AtomSectionHeader } from "../";
+import { AtomSectionHeader } from "../..";
 
 interface IProps {
   FAQ: { [key: string]: any }[];
@@ -24,7 +24,7 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
   return (
     <Box as="section" paddingY="100px" id="faq">
       <Flex justifyContent="center" alignItems="center">
-        <Box width="1128px">
+        <Box maxWidth="1128px" width="100%">
           <Box as="header" paddingBottom="100px" paddingX="1rem">
             <AtomSectionHeader>najczęściej zadawane pytania</AtomSectionHeader>
           </Box>

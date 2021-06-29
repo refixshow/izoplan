@@ -24,7 +24,7 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
         alignItems="center"
         overflow="hidden"
       >
-        <Box maxWidth={["100%", "100%", "1128px", "1128px"]}>
+        <Box maxWidth="1128px" width="100%">
           {desc.map((el) => {
             return (
               <InView key={el.tytul} threshold={0.4}>

@@ -1,7 +1,14 @@
 import Head from "next/head";
 import { fetchSingleEntry, entries } from "../../lib";
 import slugify from "slugify";
-import { Box, Text, Stack, useColorModeValue, theme } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Stack,
+  useColorModeValue,
+  theme,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
   MoleculeMainNavBar,
@@ -91,37 +98,6 @@ const Offer = ({ pageData }) => {
       </Head>
       <MoleculeMainNavBar />
       <Box as="main">
-        <Text
-          _after={{
-            content: '""',
-            position: "absolute",
-            width: "80%",
-            height: "3px",
-            backgroundColor: "red.600",
-            bottom: "-3px",
-            left: "0",
-            borderRadius: "3px",
-          }}
-          position="relative"
-          width="100%"
-          padding="2"
-          margin="4"
-          fontSize="lg"
-          fontWeight="bold"
-          as="h1"
-        >
-          {pageData.fields.tytul}
-        </Text>
-        <Box as="article" padding="1rem">
-          <Stack>
-            <Text as="h2" fontSize="xl" fontWeight="bold">
-              {pageData.fields.opisOgolny}
-            </Text>
-            <Text>
-              {pageData.fields.opisSzczegolowy.content[0].content[0].value}
-            </Text>
-          </Stack>
-        </Box>
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
         <OrganismContact />
       </Box>

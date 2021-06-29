@@ -1,12 +1,9 @@
 import type { AppProps } from "next/app";
-
 import { ChakraProvider } from "@chakra-ui/react";
-
 import { customTheme } from "../lib";
+import { motion } from "framer-motion";
 
 import "swiper/swiper-bundle.css";
-
-import { motion } from "framer-motion";
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (

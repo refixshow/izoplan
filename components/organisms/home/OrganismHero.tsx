@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectCube } from "swiper/core";
 import NextImage from "next/image";
@@ -15,12 +16,12 @@ import { ArrowDownIcon, EmailIcon } from "@chakra-ui/icons";
 
 SwiperCore.use([EffectCube]);
 
-const OrganismHero = () => {
+const OrganismHero: FC = () => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
   return (
     <Box as="section" padding="50px 1.4rem">
       <Flex justifyContent="center" alignItems="center">
-        <Box maxWidth="1128px">
+        <Box maxWidth="1128px" width="100%">
           <Flex
             flexDirection={["column", "column", "column", "row", "row"]}
             alignItems="center"
@@ -51,6 +52,7 @@ const OrganismHero = () => {
               <Box marginTop="2rem">
                 <NextLink href="/#offer">
                   <Button
+                    padding="1.5rem"
                     marginRight="5"
                     backgroundColor={grayColor}
                     leftIcon={<ArrowDownIcon />}
@@ -64,6 +66,7 @@ const OrganismHero = () => {
                     borderColor={grayColor}
                     borderWidth="2px"
                     variant="outline"
+                    padding="1.4rem"
                   >
                     kontakt
                   </Button>

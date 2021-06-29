@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { AtomSectionHeader } from "../";
+import { AtomSectionHeader } from "../..";
 
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -36,7 +36,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
       paddingBottom="150px"
     >
       <Flex justifyContent="center" alignItems="center">
-        <Box maxWidth={["100%", "100%", "1128px", "1128px"]}>
+        <Box maxWidth="1128px" width="100%">
           <Box as="header" paddingBottom="60px">
             <AtomSectionHeader>korzyści naszej pracy</AtomSectionHeader>
           </Box>
@@ -95,7 +95,11 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
               </Text>
               <Box marginTop="2rem">
                 <NextLink href="/#description">
-                  <Button leftIcon={<InfoIcon />} margin={[2, 3]}>
+                  <Button
+                    padding="1.5rem"
+                    leftIcon={<InfoIcon />}
+                    margin={[2, 3]}
+                  >
                     szczegóły
                   </Button>
                 </NextLink>
@@ -106,6 +110,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                     variant="outline"
                     margin={[2, 3]}
                     borderWidth="3px"
+                    padding="1.4rem"
                   >
                     kontakt
                   </Button>

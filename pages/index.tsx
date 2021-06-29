@@ -5,11 +5,9 @@ import {
   parseContentfulData,
   TFetchAllEntries,
 } from "../lib";
-import { Box, useColorModeValue, theme } from "@chakra-ui/react";
-import { FC, useEffect, useMemo } from "react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
+import { FC, useMemo } from "react";
 import Head from "next/head";
-
-import * as Facebook from "fb-sdk-wrapper";
 
 import {
   MoleculeMainNavBar,
@@ -119,13 +117,12 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
       </Head>
       <OrganismModalFB />
       <MoleculeMainNavBar />
-
       <Box as="main">
         <OrganismHero />
         <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
         <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
         <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismReviews reviews={fbData} />
+        <OrganismReviews limit reviews={fbData} />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
         <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />

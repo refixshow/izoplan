@@ -13,7 +13,7 @@ import {
   Link as ChakraLink,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { AtomSectionHeader } from "../";
+import { AtomSectionHeader } from "../..";
 import slugify from "slugify";
 
 import { InView } from "react-intersection-observer";
@@ -51,7 +51,7 @@ const OrganismOffer: FC<IProps> = ({ offer }) => {
       }}
     >
       <Flex justifyContent="center">
-        <Box maxWidth="1128px">
+        <Box maxWidth="1128px" width="100%">
           <Box as="header" paddingBottom="60px">
             <AtomSectionHeader>nasza oferta</AtomSectionHeader>
           </Box>

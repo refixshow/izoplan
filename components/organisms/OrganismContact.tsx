@@ -44,9 +44,13 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
 
     setState((prev) => ({ ...prev, isLoading: true }));
 
+    console.log("try");
+
     try {
       const token = await reRef.current.executeAsync();
       reRef.current.reset();
+
+      console.log(token);
 
       const res = await axios.post(
         "/api/mailer",
@@ -63,6 +67,8 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
           },
         }
       );
+
+      console.log(res);
 
       localStorage.setItem("email", "true");
     } catch (err) {

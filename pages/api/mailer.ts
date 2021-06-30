@@ -97,7 +97,7 @@ const validateBody = initMiddleware(
       check("nazwisko").isLength({ min: 1, max: 25 }),
       check("email").isEmail(),
       check("text").notEmpty(),
-      // check("token").notEmpty(),
+      check("token").notEmpty(),
     ],
     validationResult
   )

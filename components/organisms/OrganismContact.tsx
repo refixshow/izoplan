@@ -63,7 +63,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
           },
         }
       );
-      console.log(res);
+
       localStorage.setItem("email", "true");
     } catch (err) {
       console.error(err);

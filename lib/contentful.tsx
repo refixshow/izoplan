@@ -1,4 +1,9 @@
 import { createClient, EntryCollection } from "contentful";
+import { FC, memo } from "react";
+import { v4 as uuid } from "uuid";
+
+import { Box, Text } from "@chakra-ui/react";
+
 export type TFetchAllEntries = EntryCollection<unknown>;
 
 export const entries = {
@@ -40,3 +45,25 @@ export const fetchSingleEntry: (
 ) => Promise<EntryCollection<unknown>> = async (entryName) => {
   return await client.getEntries({ content_type: entryName });
 };
+
+interface IProps {
+  element: { content: { content: { value: string }[] }[] };
+}
+
+export const ComplexText: FC<IProps> = memo(({ element }) => {
+  return (
+    <>
+      {element.content.map((el) => (
+        <Text
+          display="inline-block"
+          _even={{
+            paddingTop: "20px",
+          }}
+          key={uuid()}
+        >
+          {el.content.map((innerEl) => innerEl.value)}
+        </Text>
+      ))}
+    </>
+  );
+});

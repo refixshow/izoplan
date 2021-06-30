@@ -20,6 +20,8 @@ import SwiperCore, { Autoplay, EffectCoverflow, Navigation } from "swiper/core";
 
 import { PhoneIcon, InfoIcon } from "@chakra-ui/icons";
 
+import { ComplexText } from "../../../lib";
+
 SwiperCore.use([Autoplay, Navigation, EffectCoverflow]);
 
 interface IProps {
@@ -77,9 +79,9 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                         <Text as="h4" fontSize="md" fontWeight="bold">
                           {el.tytul}
                         </Text>
-                        <Text maxWidth="50ch" as="p">
-                          {el.opis.content[0].content[0].value}
-                        </Text>
+                        <Box maxWidth="50ch" as="p">
+                          <ComplexText element={el.opis} />
+                        </Box>
                       </Stack>
                     </Flex>
                   </SwiperSlide>

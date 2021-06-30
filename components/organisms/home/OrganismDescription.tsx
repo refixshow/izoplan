@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 
 import { InView } from "react-intersection-observer";
 
+import { ComplexText } from "../../../lib";
+
 interface IProps {
   desc: { [key: string]: any }[];
 }
@@ -94,7 +96,7 @@ const OrganismDescription: FC<IProps> = ({ desc }) => {
                       <Text as="h3" fontSize="xl" fontWeight="bold">
                         {el.tytul}
                       </Text>
-                      <Text>{el.opis.content[0].content[0].value}</Text>
+                      <ComplexText element={el.opis} />
                     </Stack>
                   </MotionFlex>
                 )}

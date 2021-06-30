@@ -93,11 +93,11 @@ const validateReCAPTCHA = async (token: string) => {
 const validateBody = initMiddleware(
   validateMiddleware(
     [
-      check("imie").isLength({ min: 1, max: 15 }),
+      check("imie").isLength({ min: 1, max: 25 }),
       check("nazwisko").isLength({ min: 1, max: 25 }),
       check("email").isEmail(),
       check("text").notEmpty(),
-      check("token").notEmpty(),
+      // check("token").notEmpty(),
     ],
     validationResult
   )
@@ -114,8 +114,6 @@ export default async (req, res) => {
     await cors(req, res);
     await limiter.check(res, 10, "CACHE_TOKEN");
     await validateReCAPTCHA(req.body.token);
-
-    console.log(req.body);
 
     const msg = {
       to: "adamscieszka@gmail.com",

@@ -1,19 +1,18 @@
 import { FC } from "react";
-
+import { v4 as uuid } from "uuid";
+import { ComplexText } from "../../../lib";
 import {
-  Text,
   Flex,
   Box,
   Accordion,
-  AccordionPanel,
   AccordionItem,
   AccordionButton,
+  AccordionPanel,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-
 import { QuestionIcon, ChevronRightIcon } from "@chakra-ui/icons";
-
-import { AtomSectionHeader } from "../..";
+import { AtomSectionHeader } from "../../";
 
 interface IProps {
   FAQ: { [key: string]: any }[];
@@ -31,10 +30,7 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
           <Box>
             <Accordion allowToggle>
               {FAQ.map((el) => (
-                <AccordionItem
-                  borderColor={gray}
-                  key={el.pytanie.content[0].content[0].value}
-                >
+                <AccordionItem borderColor={gray} key={uuid()}>
                   <AccordionButton>
                     <Box flex="1" padding="24px" textAlign="left">
                       <Text
@@ -47,18 +43,20 @@ const OrganismFAQ: FC<IProps> = ({ FAQ }) => {
                           width="24px"
                           height="24px"
                         />
-                        {el.pytanie.content[0].content[0].value}
+                        <ComplexText element={el.pytanie} />
                       </Text>
                     </Box>
                   </AccordionButton>
-
-                  <AccordionPanel padding="44px" pb={4}>
+                  <AccordionPanel position="relative" padding="44px" pb={4}>
                     <ChevronRightIcon
+                      top="44px"
+                      left="14px"
+                      position="absolute"
                       marginRight=".4rem"
                       width="24px"
                       height="24px"
                     />
-                    {el.odpowiedz.content[0].content[0].value}
+                    <ComplexText element={el.odpowiedz} />
                   </AccordionPanel>
                 </AccordionItem>
               ))}

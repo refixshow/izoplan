@@ -38,11 +38,11 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
       return;
     }
 
-    if (state.isLoading) {
-      return;
-    }
+    // if (state.isLoading) {
+    //   return;
+    // }
 
-    setState((prev) => ({ ...prev, isLoading: true }));
+    // setState((prev) => ({ ...prev, isLoading: true }));
 
     console.log("try");
 

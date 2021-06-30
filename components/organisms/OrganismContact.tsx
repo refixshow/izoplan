@@ -38,21 +38,17 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
       return;
     }
 
-    // if (state.isLoading) {
-    //   return;
-    // }
-
-    // setState((prev) => ({ ...prev, isLoading: true }));
-
-    console.log("try");
+    if (state.isLoading) {
+      return;
+    }
 
     try {
       const token = await reRef.current.executeAsync();
       reRef.current.reset();
 
-      console.log(token);
+      setState((prev) => ({ ...prev, isLoading: true }));
 
-      const res = await axios.post(
+      await axios.post(
         "/api/mailer",
         {
           imie: event.target.imie.value,
@@ -68,16 +64,13 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
         }
       );
 
-      console.log(res);
-
       localStorage.setItem("email", "true");
+      setState((prev) => ({ ...prev, isLoading: false }));
     } catch (err) {
       console.error(err);
       setState((prev) => ({ ...prev, isLoading: false, isError: true }));
       return;
     }
-
-    setState((prev) => ({ ...prev, isLoading: false }));
   }, []);
 
   useEffect(() => {

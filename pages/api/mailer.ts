@@ -119,7 +119,16 @@ export default async (req, res) => {
       to: "adamscieszka@gmail.com",
       from: "adamscieszka@gmail.com",
       subject: `${req.body.imie} ${req.body.nazwisko} wypełnił formularz`,
-      text: `${req.body.text} z adresu ${req.body.email}`,
+      text: `
+        <center>
+          <p maxWidth="70ch">
+            wiadomość klienta: ${req.body.text}
+          </p>
+          <p>
+            email klienta: <strong>${req.body.email}<strong>
+          </p>
+        </center>
+      `,
     };
 
     await sgMail.send(msg);

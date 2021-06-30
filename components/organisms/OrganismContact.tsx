@@ -65,7 +65,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
       );
 
       localStorage.setItem("email", "true");
-      setState((prev) => ({ ...prev, isLoading: false }));
+      setState((prev) => ({ ...prev, isLoading: false, wasEmailSent: true }));
     } catch (err) {
       console.error(err);
       setState((prev) => ({ ...prev, isLoading: false, isError: true }));

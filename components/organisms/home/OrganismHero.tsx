@@ -87,18 +87,16 @@ const OrganismHero: FC<IProps> = ({ kostka }) => {
                 loop
               >
                 {kostka.map((el) => (
-                  <>
-                    <SwiperSlide>
-                      <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
-                        <NextImage
-                          src={`http:${el.zdjecie.fields.file.url}`}
-                          objectFit="cover"
-                          layout="fill"
-                          alt={el.zdjecie.fields.title}
-                        />
-                      </Box>
-                    </SwiperSlide>
-                  </>
+                  <SwiperSlide key={el.zdjecie.fields.title}>
+                    <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
+                      <NextImage
+                        src={`http:${el.zdjecie.fields.file.url}`}
+                        objectFit="cover"
+                        layout="fill"
+                        alt={el.zdjecie.fields.title}
+                      />
+                    </Box>
+                  </SwiperSlide>
                 ))}
               </Swiper>
             </Box>

@@ -70,7 +70,7 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
               {parsedReviews.map((review) => (
                 <div key={uuidv4()}>
                   {review.recommendation_type === "positive" && (
-                    <AtomReview keyNeeded review={review} />
+                    <AtomReview review={review} />
                   )}
                 </div>
               ))}

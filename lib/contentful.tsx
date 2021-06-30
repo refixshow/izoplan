@@ -2,7 +2,7 @@ import { createClient, EntryCollection } from "contentful";
 import { FC, memo } from "react";
 import { v4 as uuid } from "uuid";
 
-import { Box, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 export type TFetchAllEntries = EntryCollection<unknown>;
 
@@ -13,6 +13,7 @@ export const entries = {
   oferta: "oferta",
   opisPracy: "opisPracy",
   pytania: "pytania",
+  kostka: "kostka",
 };
 
 export const parseContentfulData = (contentfulData) => {

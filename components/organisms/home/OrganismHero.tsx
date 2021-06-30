@@ -16,7 +16,11 @@ import { ArrowDownIcon, EmailIcon } from "@chakra-ui/icons";
 
 SwiperCore.use([EffectCube]);
 
-const OrganismHero: FC = () => {
+interface IProps {
+  kostka: { [key: string]: any }[];
+}
+
+const OrganismHero: FC<IProps> = ({ kostka }) => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
   return (
     <Box as="section" padding="50px 1.4rem">
@@ -82,33 +86,20 @@ const OrganismHero: FC = () => {
                 effect="cube"
                 loop
               >
-                <SwiperSlide>
-                  <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
-                    <NextImage
-                      src="/assets/slide-bg-1.png"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </Box>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
-                    <NextImage
-                      src="/assets/slide-bg-2.png"
-                      objectFit="cover"
-                      layout="fill"
-                    />
-                  </Box>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
-                    <NextImage
-                      src="/assets/slide-bg-1.png"
-                      objectFit="cover"
-                      layout="fill"
-                    />
-                  </Box>
-                </SwiperSlide>
+                {kostka.map((el) => (
+                  <>
+                    <SwiperSlide>
+                      <Box height={["45vh", "45vh", "45vh", "55vh", "55vh"]}>
+                        <NextImage
+                          src={`http:${el.zdjecie.fields.file.url}`}
+                          objectFit="cover"
+                          layout="fill"
+                          alt={el.zdjecie.fields.title}
+                        />
+                      </Box>
+                    </SwiperSlide>
+                  </>
+                ))}
               </Swiper>
             </Box>
           </Flex>

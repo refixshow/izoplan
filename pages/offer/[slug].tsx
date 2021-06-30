@@ -1,14 +1,7 @@
 import Head from "next/head";
 import { fetchSingleEntry, entries } from "../../lib";
 import slugify from "slugify";
-import {
-  Box,
-  Flex,
-  Text,
-  Stack,
-  useColorModeValue,
-  theme,
-} from "@chakra-ui/react";
+import { Box, useColorModeValue, theme } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
   MoleculeMainNavBar,
@@ -42,7 +35,6 @@ const Offer = ({ pageData }) => {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#eee" />
         <title>Izoplan - {pageData.fields.tytul}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content={pageData.fields.opisOgolny} />
         <meta name="author" content="Adam Ścieszka" />
         <meta
@@ -101,7 +93,7 @@ const Offer = ({ pageData }) => {
       <Box as="main">
         <OrganismSectionOffer offer={pageData} />
         <MoleculeInvitation yellow text="Bezplatny pomiar i wycena!" />
-        <OrganismContact />
+        <OrganismContact padding />
       </Box>
       <OrganismFooter />
     </MotionBox>

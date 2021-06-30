@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, FC } from "react";
+import { useRef, FC } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   Flex,
@@ -12,85 +12,22 @@ import {
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 import { AtomSectionHeader } from "../";
-import axios from "axios";
+
+import { useContactForm } from "../../hooks";
 
 interface IProps {
   padding?: boolean;
 }
 
 const OrganismContact: FC<IProps> = ({ padding }) => {
-  const [state, setState] = useState({
-    isLoading: false,
-    wasEmailSent: false,
-    isError: false,
-  });
-
   const reRef = useRef<ReCAPTCHA>();
-
-  const handleFakeSubmit = useCallback((event) => {
-    event.preventDefault();
-  }, []);
-
-  const handleSubmit = useCallback(async (event) => {
-    event.preventDefault();
-
-    if (state.wasEmailSent === true) {
-      return;
-    }
-
-    if (state.isLoading) {
-      return;
-    }
-
-    try {
-      const token = await reRef.current.executeAsync();
-      reRef.current.reset();
-
-      setState((prev) => ({ ...prev, isLoading: true }));
-
-      await axios.post(
-        "/api/mailer",
-        {
-          imie: event.target.imie.value,
-          nazwisko: event.target.nazwisko.value,
-          email: event.target.email.value,
-          text: event.target.text.value,
-          token,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      localStorage.setItem("email", "true");
-      setState((prev) => ({ ...prev, isLoading: false, wasEmailSent: true }));
-    } catch (err) {
-      console.error(err);
-      setState((prev) => ({ ...prev, isLoading: false, isError: true }));
-      return;
-    }
-  }, []);
-
-  useEffect(() => {
-    const persistedWasEmailSent = JSON.parse(
-      window.localStorage.getItem("email")
-    );
-
-    if (persistedWasEmailSent !== null) {
-      setState((prev) => ({
-        ...prev,
-        wasEmailSent: persistedWasEmailSent,
-      }));
-      return;
-    }
-
-    setState((prev) => ({
-      ...prev,
-      wasEmailSent: false,
-    }));
-  }, []);
+  const {
+    handleFakeSubmit,
+    handleSubmit,
+    isError,
+    isLoading,
+    wasEmailSent,
+  } = useContactForm(reRef);
 
   return (
     <Box
@@ -105,7 +42,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
           minHeight="300px"
           width="100%"
         >
-          {state.wasEmailSent ? (
+          {wasEmailSent ? (
             <Flex
               width="100%"
               height="100%"
@@ -119,7 +56,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
             </Flex>
           ) : (
             <>
-              {state.isLoading ? (
+              {isLoading ? (
                 <Flex height="100%" justifyContent="center" alignItems="center">
                   <Spinner size="xl" />
                 </Flex>
@@ -144,9 +81,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
                       boxShadow="0px 5px 10px rgb(0 0 0 / 40%)"
                     >
                       <form
-                        onSubmit={
-                          state.isLoading ? handleFakeSubmit : handleSubmit
-                        }
+                        onSubmit={isLoading ? handleFakeSubmit : handleSubmit}
                       >
                         <Flex
                           direction={["column", "row", "row", "row", "row"]}
@@ -155,7 +90,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
                           <FormControl
                             marginRight={["0", "1rem", "1rem", "1rem", "1rem"]}
                             paddingBottom={["2rem", "0", "0", "0", "0"]}
-                            isDisabled={state.isLoading}
+                            isDisabled={isLoading}
                           >
                             <FormLabel>Imię</FormLabel>
                             <Input
@@ -166,7 +101,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
                               required
                             />
                           </FormControl>
-                          <FormControl isDisabled={state.isLoading}>
+                          <FormControl isDisabled={isLoading}>
                             <FormLabel>Nazwisko</FormLabel>
                             <Input
                               variant="flushed"
@@ -180,7 +115,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
 
                         <FormControl
                           paddingBottom="1rem"
-                          isDisabled={state.isLoading}
+                          isDisabled={isLoading}
                           mt={4}
                         >
                           <FormLabel>E-mail</FormLabel>
@@ -194,7 +129,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
                         </FormControl>
                         <FormControl
                           paddingBottom="1rem"
-                          isDisabled={state.isLoading}
+                          isDisabled={isLoading}
                           mt={4}
                         >
                           <FormLabel>Twoja wiadomość</FormLabel>
@@ -213,7 +148,7 @@ const OrganismContact: FC<IProps> = ({ padding }) => {
                             ref={reRef}
                           />
                         </FormControl>
-                        <FormControl isDisabled={state.isLoading} mt={4}>
+                        <FormControl isDisabled={isLoading} mt={4}>
                           <Input cursor="pointer" type="submit" />
                         </FormControl>
                       </form>

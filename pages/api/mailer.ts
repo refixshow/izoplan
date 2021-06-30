@@ -119,7 +119,7 @@ export default async (req, res) => {
       to: "adamscieszka@gmail.com",
       from: "adamscieszka@gmail.com",
       subject: `${req.body.imie} ${req.body.nazwisko} wypełnił formularz`,
-      text: `
+      html: `
         <center>
           <p maxWidth="70ch">
             wiadomość klienta: ${req.body.text}

@@ -68,11 +68,11 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
           ) : (
             <Flex flexWrap="wrap" justifyContent="center">
               {parsedReviews.map((review) => (
-                <>
+                <div key={uuidv4()}>
                   {review.recommendation_type === "positive" && (
                     <AtomReview keyNeeded review={review} />
                   )}
-                </>
+                </div>
               ))}
             </Flex>
           )}

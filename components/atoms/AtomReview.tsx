@@ -11,17 +11,15 @@ import { PlusSquareIcon } from "@chakra-ui/icons";
 
 interface IProps {
   review: { [key: string]: any };
-  keyNeeded?: boolean;
 }
 
-const AtomReview: FC<IProps> = memo(({ review, keyNeeded }) => {
+const AtomReview: FC<IProps> = memo(({ review }) => {
   const white = useColorModeValue("gray.800", "whiteAlpha.900");
   const gray = useColorModeValue("whiteAlpha.900", "gray.800");
   const yellow = useColorModeValue("yellow.500", "yellow.400");
 
   return (
     <Box
-      key={keyNeeded && review.review_text}
       as="article"
       position="relative"
       width="400px"

@@ -118,7 +118,7 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
       <OrganismModalFB />
       <MoleculeMainNavBar />
       <Box as="main">
-        <OrganismHero />
+        <OrganismHero kostka={parsedcontentfulData[entries.kostka]} />
         <OrganismOffer offer={parsedcontentfulData[entries.oferta]} />
         <OrganismCons cons={parsedcontentfulData[entries.korzysci]} />
         <MoleculeInvitation popup yellow text="Bezplatny pomiar i wycena!" />

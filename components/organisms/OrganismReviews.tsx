@@ -4,13 +4,7 @@ import NextLink from "next/link";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { v4 as uuidv4 } from "uuid";
 
-import {
-  Box,
-  Flex,
-  useColorModeValue,
-  Button,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue, Button } from "@chakra-ui/react";
 
 import { AtomReview } from "..";
 

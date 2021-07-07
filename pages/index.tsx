@@ -125,7 +125,7 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
         <OrganismReviews cta limit reviews={fbData} />
         <OrganismDescription desc={parsedcontentfulData[entries.opisPracy]} />
         <MoleculeInvitation text="Ciepło polecamy!" />
-        <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} />
+        <OrganismFAQ FAQ={parsedcontentfulData[entries.pytania]} limit />
         <OrganismContact />
       </Box>
       <OrganismFooter />

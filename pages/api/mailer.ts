@@ -116,7 +116,7 @@ export default async (req, res) => {
     await validateReCAPTCHA(req.body.token);
 
     const msg = {
-      to: "adamscieszka@gmail.com",
+      to: "izoplan@o2.pl",
       from: "adamscieszka@gmail.com",
       subject: `${req.body.imie} ${req.body.nazwisko} wypełnił formularz`,
       html: `

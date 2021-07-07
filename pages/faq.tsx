@@ -116,8 +116,6 @@ export async function getStaticProps() {
     console.error(err);
   }
 
-  console.log(faq);
-
   return {
     props: { faq: faq.items },
   };

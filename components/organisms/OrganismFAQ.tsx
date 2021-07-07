@@ -17,7 +17,7 @@ import { QuestionIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { AtomSectionHeader } from "..";
 
 interface IProps {
-  FAQ: { [key: string]: any }[];
+  FAQ: { [key: string]: any }[] | { [key: string]: any };
   limit?: boolean;
 }
 

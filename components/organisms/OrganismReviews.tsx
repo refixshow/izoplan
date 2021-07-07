@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
-import { Masonry } from "masonic";
 import NextLink from "next/link";
 
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { v4 as uuidv4 } from "uuid";
 
 import {
@@ -35,13 +35,8 @@ const parseReviews = (reviews: { [key: string]: any }[]) => {
   });
 };
 
-const MasonryCard = ({ index, data, width }) =>
-  data.recommendation_type === "positive" ? <AtomReview review={data} /> : null;
-
 const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
   const grayColor = useColorModeValue("gray.300", "gray.800");
-  const colums = useBreakpointValue([1, 1, 2, 2, 3]);
-  const tileWidth = useBreakpointValue(["100%", "100%", "50%", "50%", "400px"]);
   const parsedReviews = useMemo(
     () => (limit ? parseReviews(reviews) : reviews),
     [reviews]
@@ -52,19 +47,20 @@ const OrganismReviews: FC<IProps> = ({ reviews, limit, masonry, cta }) => {
       <Flex justifyContent="center">
         <Box maxWidth="1128px" width="100%" position="relative">
           {masonry ? (
-            <Masonry
-              itemKey={() => uuidv4()}
-              itemStyle={{
-                width: tileWidth,
-                display: "flex",
-                alignContent: "center",
-                justifyContent: "center",
-              }}
-              columnGutter={colums * 10}
-              columnCount={colums}
-              items={parsedReviews}
-              render={MasonryCard}
-            />
+            <ResponsiveMasonry
+              columnsCountBreakPoints={{ 350: 1, 850: 2, 1300: 3 }}
+            >
+              <Masonry gutter="20px">
+                {reviews.map(
+                  (review) =>
+                    review.recommendation_type === "positive" && (
+                      <Flex justifyContent="center">
+                        <AtomReview review={review} />
+                      </Flex>
+                    )
+                )}
+              </Masonry>
+            </ResponsiveMasonry>
           ) : (
             <Flex flexWrap="wrap" justifyContent="center">
               {parsedReviews.map((review) => (

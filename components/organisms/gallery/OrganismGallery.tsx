@@ -21,7 +21,11 @@ const OrganismGallery: FC<IProps> = ({ gallery }) => {
                 <NextImage
                   key={img.fields.zdjecie.fields.title}
                   src={`http:${img.fields.zdjecie.fields.file.url}`}
-                  width={img.fields.zdjecie.fields.file.details.image.width}
+                  width={
+                    img.fields.zdjecie.fields.file.details.image.width > 450
+                      ? img.fields.zdjecie.fields.file.details.image.width
+                      : 450
+                  }
                   height={img.fields.zdjecie.fields.file.details.image.height}
                   alt={img.fields.zdjecie.fields.title}
                 />

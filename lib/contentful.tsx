@@ -38,13 +38,13 @@ const client = createClient({
 export const fetchAllEntries: () => Promise<
   EntryCollection<unknown>
 > = async () => {
-  return await client.getEntries();
+  return await client.getEntries({ limit: 1000 });
 };
 
 export const fetchSingleEntry: (
   entryName: string
 ) => Promise<EntryCollection<unknown>> = async (entryName) => {
-  return await client.getEntries({ content_type: entryName });
+  return await client.getEntries({ content_type: entryName, limit: 1000 });
 };
 
 interface IProps {

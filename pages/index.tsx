@@ -24,6 +24,7 @@ import {
 } from "../components";
 
 import { motion } from "framer-motion";
+import { parse } from "uuid";
 
 const MotionBox = motion(Box);
 
@@ -41,6 +42,8 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
     () => parseContentfulData(contentfulData),
     [contentfulData]
   );
+
+  console.log(parsedcontentfulData);
 
   return (
     <MotionBox

@@ -1,5 +1,4 @@
 import { FC } from "react";
-
 import NextImage from "next/image";
 import NextLink from "next/link";
 import {

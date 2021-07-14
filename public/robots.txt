@@ -1,5 +1,7 @@
-User-agent: *
-Allow: /*
+User-agent: Googlebot
+Disallow: /nogooglebot/
 
-Disallow: /api/*
-Disallow: /app/*
+User-agent: *
+Allow: /
+
+Sitemap: https://izoplanpur.pl/sitemap.xml

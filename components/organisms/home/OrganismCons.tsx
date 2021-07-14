@@ -60,7 +60,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                 },
               }}
             >
-              {/* {cons.map((el) => {
+              {cons.map((el) => {
                 return (
                   <SwiperSlide key={el.tytul}>
                     <Flex
@@ -87,7 +87,7 @@ const OrganismCons: FC<IProps> = ({ cons }) => {
                     </Flex>
                   </SwiperSlide>
                 );
-              })} */}
+              })}
             </Swiper>
           </Box>
           <Flex justifyContent="center" textAlign="center">

@@ -43,8 +43,6 @@ const Home: FC<IProps> = ({ pageData: { contentfulData, fbData } }) => {
     [contentfulData]
   );
 
-  console.log(parsedcontentfulData);
-
   return (
     <MotionBox
       exit={{ opacity: 0 }}

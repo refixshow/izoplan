@@ -4,4 +4,7 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
+Disallow: /api/*
+Disallow: /app/*
+
 Sitemap: https://izoplanpur.pl/sitemap.xml
